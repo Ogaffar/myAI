@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import Anthropic from "@anthropic-ai/sdk";
 import {
   CoreMessage,
   StreamedLoading,
@@ -10,7 +11,10 @@ import {
   Citation,
   StreamedError,
 } from "@/types";
-import Anthropic from "@anthropic-ai/sdk";
+
+// Configuration constants
+const MAX_TOKENS = 4096;
+const LOGGING_ENABLED = true;
 
 export interface QueueAssistantResponseParams {
   controller: ReadableStreamDefaultController;
@@ -20,10 +24,41 @@ export interface QueueAssistantResponseParams {
   model_name: string;
   systemPrompt: string;
   citations: Citation[];
-  error_message: string;
+  error_message?: string;
   temperature: number;
 }
 
+/**
+ * Helper function to log messages when logging is enabled
+ */
+function logMessage(message: string, data?: any): void {
+  if (LOGGING_ENABLED) {
+    if (data) {
+      console.log(message, data);
+    } else {
+      console.log(message);
+    }
+  }
+}
+
+/**
+ * Helper function to time operations
+ */
+function startTimer(): () => number {
+  const startTime = Date.now();
+  return () => (Date.now() - startTime) / 1000;
+}
+
+/**
+ * Helper function to encode and enqueue a message to the stream
+ */
+function enqueueMessage(controller: ReadableStreamDefaultController, message: any): void {
+  controller.enqueue(new TextEncoder().encode(JSON.stringify(message) + "\n"));
+}
+
+/**
+ * Handle streaming responses from OpenAI compatible providers
+ */
 export async function handleOpenAIStream({
   controller,
   providers,
@@ -34,62 +69,69 @@ export async function handleOpenAIStream({
   citations,
   temperature,
 }: QueueAssistantResponseParams) {
-  let client: OpenAI = providers.openai;
-  if (providerName === "fireworks") {
-    client = providers.fireworks;
-    console.log("Streaming Fireworks response...", {
-      temperature,
-      model_name,
-      systemPrompt,
-      messages,
-    });
-  } else {
-    console.log("Streaming OpenAI response...", {
-      temperature,
-      model_name,
-      systemPrompt,
-      messages,
-    });
-  }
-  const startTime = Date.now();
-  const streamedResponse = await client.chat.completions.create({
-    model: model_name,
-    messages: [{ role: "system", content: systemPrompt }, ...messages],
-    stream: true,
+  const client: OpenAI = providerName === "fireworks" ? providers.fireworks : providers.openai;
+  
+  logMessage(`Streaming ${providerName} response...`, {
     temperature,
+    model_name,
+    systemPrompt,
+    messages: messages.length, // Log count instead of full messages for brevity
   });
-  if (!streamedResponse) {
-    throw new Error("No stream response");
-  }
-  let responseBuffer: string = "";
 
-  for await (const chunk of streamedResponse) {
-    responseBuffer += chunk.choices[0]?.delta.content ?? "";
-    const streamedMessage: StreamedMessage = {
-      type: "message",
-      message: {
-        role: "assistant",
-        content: responseBuffer,
-        citations,
-      },
+  const getElapsedTime = startTimer();
+  let responseBuffer = "";
+
+  try {
+    const streamedResponse = await client.chat.completions.create({
+      model: model_name,
+      messages: [{ role: "system", content: systemPrompt }, ...messages],
+      stream: true,
+      temperature,
+    });
+
+    if (!streamedResponse) {
+      throw new Error("No stream response received");
+    }
+
+    for await (const chunk of streamedResponse) {
+      const content = chunk.choices[0]?.delta.content ?? "";
+      responseBuffer += content;
+      
+      const streamedMessage: StreamedMessage = {
+        type: "message",
+        message: {
+          role: "assistant",
+          content: responseBuffer,
+          citations,
+        },
+      };
+      
+      enqueueMessage(controller, streamedMessage);
+    }
+
+    logMessage(`Done streaming ${providerName} response in ${getElapsedTime()}s`);
+    
+    const donePayload: StreamedDone = {
+      type: "done",
+      final_message: responseBuffer,
     };
-    controller.enqueue(
-      new TextEncoder().encode(JSON.stringify(streamedMessage) + "\n")
-    );
+    
+    enqueueMessage(controller, donePayload);
+  } catch (error) {
+    logMessage(`Error in ${providerName} stream:`, error);
+    await queueError({ 
+      controller, 
+      error_message: error instanceof Error ? error.message : "Unknown error occurred" 
+    });
+    return;
   }
-  const endTime = Date.now();
-  const streamDuration = endTime - startTime;
-  console.log(`Done streaming OpenAI response in ${streamDuration / 1000}s`);
-  const donePayload: StreamedDone = {
-    type: "done",
-    final_message: responseBuffer,
-  };
-  controller.enqueue(
-    new TextEncoder().encode(JSON.stringify(donePayload) + "\n")
-  );
+  
   controller.close();
 }
 
+/**
+ * Handle streaming responses from Anthropic
+ */
 export async function handleAnthropicStream({
   controller,
   providers,
@@ -99,54 +141,78 @@ export async function handleAnthropicStream({
   citations,
   temperature,
 }: QueueAssistantResponseParams) {
-  let anthropicClient: Anthropic = providers.anthropic;
-  let anthropicMessages: Anthropic.Messages.MessageParam[] = messages.map(
-    (msg) => ({
-      role: msg.role === "user" ? "user" : "assistant",
-      content: msg.content,
-    })
-  );
-  let responseBuffer: string = "";
-  console.log("Streaming Anthropic response...", {
+  const anthropicClient: Anthropic = providers.anthropic;
+  
+  // Transform messages to Anthropic format
+  const anthropicMessages: Anthropic.Messages.MessageParam[] = messages.map(msg => ({
+    role: msg.role === "user" ? "user" : "assistant",
+    content: msg.content,
+  }));
+
+  logMessage("Streaming Anthropic response...", {
     temperature,
     model_name,
     systemPrompt,
-    messages,
+    messages: messages.length, // Log count instead of full messages for brevity
   });
-  await anthropicClient.messages
-    .stream({
-      messages: anthropicMessages,
-      model: model_name,
-      system: systemPrompt,
-      max_tokens: 4096,
-      temperature,
-    })
-    .on("text", (textDelta) => {
-      responseBuffer += textDelta;
-      const streamedMessage: StreamedMessage = {
-        type: "message",
-        message: {
-          role: "assistant",
-          content: responseBuffer,
-          citations,
-        },
-      };
-      controller.enqueue(
-        new TextEncoder().encode(JSON.stringify(streamedMessage) + "\n")
-      );
-    })
-    .on("end", () => {
-      const donePayload: StreamedDone = {
-        type: "done",
-        final_message: responseBuffer,
-      };
-      controller.enqueue(
-        new TextEncoder().encode(JSON.stringify(donePayload) + "\n")
-      );
-      controller.close();
+
+  const getElapsedTime = startTimer();
+  let responseBuffer = "";
+
+  try {
+    await anthropicClient.messages
+      .stream({
+        messages: anthropicMessages,
+        model: model_name,
+        system: systemPrompt,
+        max_tokens: MAX_TOKENS,
+        temperature,
+      })
+      .on("text", (textDelta) => {
+        responseBuffer += textDelta;
+        
+        const streamedMessage: StreamedMessage = {
+          type: "message",
+          message: {
+            role: "assistant",
+            content: responseBuffer,
+            citations,
+          },
+        };
+        
+        enqueueMessage(controller, streamedMessage);
+      })
+      .on("error", (error) => {
+        logMessage("Error in Anthropic stream:", error);
+        queueError({ 
+          controller, 
+          error_message: error.message || "Unknown error with Anthropic" 
+        });
+      })
+      .on("end", () => {
+        logMessage(`Done streaming Anthropic response in ${getElapsedTime()}s`);
+        
+        const donePayload: StreamedDone = {
+          type: "done",
+          final_message: responseBuffer,
+        };
+        
+        enqueueMessage(controller, donePayload);
+        controller.close();
+      });
+  } catch (error) {
+    logMessage("Error setting up Anthropic stream:", error);
+    await queueError({ 
+      controller, 
+      error_message: error instanceof Error ? error.message : "Unknown error occurred" 
     });
+    controller.close();
+  }
 }
 
+/**
+ * Main function to route requests to the appropriate provider
+ */
 export async function queueAssistantResponse({
   controller,
   providers,
@@ -158,31 +224,41 @@ export async function queueAssistantResponse({
   error_message,
   temperature,
 }: QueueAssistantResponseParams) {
-  if (providerName === "openai" || providerName === "fireworks") {
-    console.log(providerName);
-    await handleOpenAIStream({
-      controller,
-      providers,
-      providerName,
-      messages,
-      model_name,
-      systemPrompt,
-      citations,
-      error_message,
-      temperature,
+  try {
+    if (providerName === "openai" || providerName === "fireworks") {
+      await handleOpenAIStream({
+        controller,
+        providers,
+        providerName,
+        messages,
+        model_name,
+        systemPrompt,
+        citations,
+        error_message,
+        temperature,
+      });
+    } else if (providerName === "anthropic") {
+      await handleAnthropicStream({
+        controller,
+        providers,
+        providerName,
+        messages,
+        model_name,
+        systemPrompt,
+        citations,
+        error_message,
+        temperature,
+      });
+    } else {
+      throw new Error(`Unsupported provider: ${providerName}`);
+    }
+  } catch (error) {
+    logMessage("Error in queueAssistantResponse:", error);
+    await queueError({ 
+      controller, 
+      error_message: error instanceof Error ? error.message : "Unknown error occurred" 
     });
-  } else if (providerName === "anthropic") {
-    await handleAnthropicStream({
-      controller,
-      providers,
-      providerName,
-      messages,
-      model_name,
-      systemPrompt,
-      citations,
-      error_message,
-      temperature,
-    });
+    controller.close();
   }
 }
 
@@ -192,6 +268,9 @@ export interface QueueLoadingParams {
   icon: IndicatorIconType;
 }
 
+/**
+ * Queue a loading indicator to the stream
+ */
 export async function queueIndicator({
   controller,
   status,
@@ -200,13 +279,12 @@ export async function queueIndicator({
   const loadingPayload: StreamedLoading = {
     type: "loading",
     indicator: {
-      status: status,
-      icon: icon,
+      status,
+      icon,
     },
   };
-  controller.enqueue(
-    new TextEncoder().encode(JSON.stringify(loadingPayload) + "\n")
-  );
+  
+  enqueueMessage(controller, loadingPayload);
 }
 
 export interface QueueErrorParams {
@@ -214,6 +292,9 @@ export interface QueueErrorParams {
   error_message: string;
 }
 
+/**
+ * Queue an error message to the stream
+ */
 export async function queueError({
   controller,
   error_message,
@@ -225,8 +306,6 @@ export async function queueError({
       icon: "error",
     },
   };
-  controller.enqueue(
-    new TextEncoder().encode(JSON.stringify(errorPayload) + "\n")
-  );
-  controller.close();
+  
+  enqueueMessage(controller, errorPayload);
 }
