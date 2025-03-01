@@ -78,7 +78,7 @@ export default function ChatMessages({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="flex flex-col flex-1 p-1 gap-3"
+      className="flex flex-col flex-1 p-1 gap-3 fixed top-20 right-5 w-[350px] h-[80%] overflow-y-auto bg-white shadow-lg"
     >
       <div className="h-[60px]"></div>
       {messages.length === 0 ? (
