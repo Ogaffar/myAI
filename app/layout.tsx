@@ -43,10 +43,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <TooltipProvider>
             <ErrorWrapper>{children}</ErrorWrapper>
           </TooltipProvider>
-
-          {/* Scrolling Line Fixed to the Right */}
-          <div className="scroll-line"></div>
         </div>
+        {/* Scrolling Line Fixed to the Right */}
+        <div className="scroll-line"></div>
       </body>
     </html>
   );
