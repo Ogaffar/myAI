@@ -52,7 +52,7 @@ Use the following excerpts from ${OWNER_NAME} to answer the user's question. If 
 Excerpts from ${OWNER_NAME}:
 ${context}
 
-If the excerpts given do not contain any information relevant to the user's question, say something along the lines of "Interesting," then proceed to answer the question based on your knowledge of ${OWNER_NAME}.
+If the excerpts given do not contain any information relevant to the user's question, say something along the lines of "Interesting" then proceed to answer the question based on your knowledge of ${OWNER_NAME}.
 
 Respond with the following tone: ${AI_TONE}
 
@@ -64,7 +64,7 @@ export function RESPOND_TO_QUESTION_BACKUP_SYSTEM_PROMPT() {
   return `
 ${IDENTITY_STATEMENT} ${OWNER_STATEMENT} ${OWNER_DESCRIPTION} ${AI_ROLE}
 
-You couldn't perform a proper search for the user's question, but still answer the question starting with "Interesting," then proceed to answer the question based on your knowledge of ${OWNER_NAME}.
+You couldn't perform a proper search for the user's question, but still answer the question starting with "Interesting" then proceed to answer the question based on your knowledge of ${OWNER_NAME}.
 
 Respond with the following tone: ${AI_TONE}
 
