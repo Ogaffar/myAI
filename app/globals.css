@@ -7,11 +7,11 @@ body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply text-foreground;
 }
 
 /* Thematic Background for Sports with Black Background */
 body {
-  @apply text-foreground;
   background: url('/new-sports-background.png') no-repeat center center fixed;
   background-size: cover;
   background-blend-mode: darken; /* Darkens the image */
@@ -44,53 +44,25 @@ body {
 
 /* Chat Bubble Styles */
 @layer components {
-  /* General Chat Bubble Style */
   .chat-bubble {
     @apply px-4 py-3 rounded-lg shadow-md max-w-[80%] relative;
     background-color: rgba(50, 50, 50, 0.9); /* Darker color */
-    color: #fff; /* Ensure text is readable */
+    color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
     transition: all 0.3s ease-in-out;
   }
 
-  /* User Message (Align Right) */
+  /* User and Bot Messages */
   .chat-bubble-user {
     @apply ml-auto text-right bg-blue-600 relative;
     border-radius: 12px 12px 0 12px;
     animation: slideInRight 0.5s ease-in-out;
   }
 
-  /* Bot Message (Align Left) */
   .chat-bubble-bot {
     @apply mr-auto text-left bg-gray-700 relative;
     border-radius: 12px 12px 12px 0;
     animation: slideInLeft 0.5s ease-in-out;
-  }
-
-  /* Chat Bubble Tail - Bot */
-  .chat-bubble-bot::after {
-    content: "";
-    position: absolute;
-    left: -10px;
-    bottom: 8px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 12px 0 0;
-    border-color: rgba(50, 50, 50, 0.9) transparent transparent transparent;
-  }
-
-  /* Chat Bubble Tail - User */
-  .chat-bubble-user::after {
-    content: "";
-    position: absolute;
-    right: -10px;
-    bottom: 8px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 0 0 12px;
-    border-color: #2563eb transparent transparent transparent; /* Match user bubble color */
   }
 
   /* Chat Container */
@@ -98,7 +70,7 @@ body {
     @apply flex flex-col space-y-4 p-4 bg-black bg-opacity-40 backdrop-blur-md rounded-lg;
   }
 
-  /* User Input Area */
+  /* Input Area */
   .chat-input {
     @apply p-4 bg-white rounded-lg text-black shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500;
   }
@@ -134,27 +106,4 @@ body {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
-}
-
-/* Animations for chat bubbles */
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    transform: translateX(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
 }
