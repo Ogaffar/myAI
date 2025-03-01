@@ -39,9 +39,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <TooltipProvider>
-          <ErrorWrapper>{children}</ErrorWrapper>
-        </TooltipProvider>
+        <div className="relative">
+          <TooltipProvider>
+            <ErrorWrapper>{children}</ErrorWrapper>
+          </TooltipProvider>
+
+          {/* Scrolling Line Fixed to the Right */}
+          <div className="scroll-line"></div>
+        </div>
       </body>
     </html>
   );
