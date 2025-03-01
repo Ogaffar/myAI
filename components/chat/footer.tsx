@@ -3,11 +3,11 @@ import Link from "next/link";
 
 export default function ChatFooter() {
   return (
-    <div className="w-full text-xs flex pt-2 text-gray-500">
+    <div className="w-full text-xs flex pt-2 text-gray-500 bg-gradient-to-t from-black/80 to-transparent">
       <div className="flex-grow text-left">
         {/* Left Pane */}
-        <Link 
-          href="/terms" 
+        <Link
+          href="/terms"
           className="hover:underline hover:text-gray-700 transition-colors"
           aria-label="Terms of Service"
         >
@@ -22,7 +22,6 @@ export default function ChatFooter() {
 
       <div className="flex-grow text-right">
         {/* Right Pane */}
-        {/* Do not remove or modify the following message. Removal or modification violates the license agreement. */}
         <a
           href="https://www.ringel.ai"
           target="_blank"
