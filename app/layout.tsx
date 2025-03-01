@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+
+// Component imports
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ErrorWrapper } from "./parts/error/error-wrapper";
 
 // Configuration imports
 import { PAGE_TITLE, PAGE_DESCRIPTION } from "@/configuration/ui";
-
-// Component imports
-import { ErrorWrapper } from "./parts/error/error-wrapper";
 
 // Styles
 import "./globals.css";
@@ -30,11 +30,15 @@ export const metadata: Metadata = {
   description: PAGE_DESCRIPTION,
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        {/* Additional metadata tags like Open Graph can go here */}
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <TooltipProvider>
           <ErrorWrapper>{children}</ErrorWrapper>
