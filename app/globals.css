@@ -1,96 +1,125 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+ 
 /* Base font settings */
 body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* Single Sports Background */
-@layer components {
-  .bg-sports {
-    background-image: url('/new-sports-background.png'); /* Adjust image path */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    width: 100%;
-  }
+ 
+/* Thematic Background for Cooking Assistant */
+body {
+  @apply text-foreground;
+  background: url('/new-sports-background.png') no-repeat center center fixed;
+  background-size: cover;
+  background-blend-mode: overlay;
+  background-color: rgba(255, 230, 200, 0.6); /* Warm food-inspired tone */
 }
-
-/* Sports-Themed Utility Classes */
-@layer utilities {
-  .text-stroke-light {
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
-  }
-  
-  .text-stroke-dark {
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
-  }
-  
-  .content-wrapper {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  .bg-gradient-team-blue {
-    background: linear-gradient(135deg, hsl(214, 100%, 60%) 0%, hsl(214, 100%, 40%) 100%);
-  }
-
-  .bg-gradient-team-red {
-    background: linear-gradient(135deg, hsl(0, 100%, 65%) 0%, hsl(0, 100%, 45%) 100%);
-  }
-
-  .bg-gradient-team-green {
-    background: linear-gradient(135deg, hsl(142, 77%, 55%) 0%, hsl(142, 77%, 35%) 100%);
-  }
+ 
+/* Dark mode adjustments */
+.dark body {
+  background: url('/ new-sports-background-black.png') no-repeat center center fixed;
+  background-size: cover;
+  background-blend-mode: overlay;
+  background-color: rgba(30, 30, 30, 0.8); /* Dark kitchen ambiance */
 }
-
-/* Global Styles & Typography */
+ 
+/* Ensure text remains readable over backgrounds */
 @layer base {
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
   }
-
   :focus-visible {
-    @apply outline-none ring-2 ring-ring ring-offset-2;
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
-
-  h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
-  }
-
-  h2 {
-    @apply text-3xl md:text-4xl font-bold;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium tracking-tight;
   }
 }
-
-/* Smooth Scrolling */
+ 
+/* Chat Bubble Styles */
+@layer components {
+  /* General Chat Bubble Style */
+  .chat-bubble {
+    @apply px-4 py-3 rounded-lg shadow-md max-w-[80%] relative;
+    background-color: rgba(50, 50, 50, 0.9); /* Darker color */
+    color: #fff; /* Ensure text is readable */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+  }
+ 
+  /* User Message (Align Right) */
+  .chat-bubble-user {
+    @apply ml-auto text-right bg-blue-600 relative;
+    border-radius: 12px 12px 0 12px;
+  }
+ 
+  /* Bot Message (Align Left) */
+  .chat-bubble-bot {
+    @apply mr-auto text-left bg-gray-700 relative;
+    border-radius: 12px 12px 12px 0;
+  }
+ 
+  /* Chat Bubble Tail - Bot */
+  .chat-bubble-bot::after {
+    content: "";
+    position: absolute;
+    left: -10px;
+    bottom: 8px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 12px 0 0;
+    border-color: rgba(50, 50, 50, 0.9) transparent transparent transparent;
+  }
+ 
+  /* Chat Bubble Tail - User */
+  .chat-bubble-user::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    bottom: 8px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 0 12px;
+    border-color: #2563eb transparent transparent transparent; /* Match user bubble color */
+  }
+ 
+  /* Chat Container */
+  .chat-container {
+    @apply flex flex-col space-y-2 p-4;
+  }
+}
+ 
+/* Responsive typography */
+@layer base {
+  html {
+    font-size: 16px;
+  }
+  @screen sm {
+    html {
+      font-size: 16px;
+    }
+  }
+  @screen md {
+    html {
+      font-size: 16.5px;
+    }
+  }
+  @screen lg {
+    html {
+      font-size: 17px;
+    }
+  }
+}
+ 
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Animations */
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.animate-bounce-slow {
-  animation: bounce 3s ease-in-out infinite;
-}
-
-@keyframes score-ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.score-ticker {
-  animation: score-ticker 20s linear infinite;
-}
