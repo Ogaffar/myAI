@@ -81,6 +81,17 @@ body {
   }
 }
 
+/* Scrolling line fixed to the right */
+.scroll-line {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 2px; /* Adjust thickness */
+  height: 100%;
+  background-color: #fff; /* Color of the line */
+  z-index: 999; /* Ensure it's above other elements */
+}
+
 /* Responsive typography */
 @layer base {
   html {
