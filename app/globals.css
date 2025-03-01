@@ -11,8 +11,8 @@ body {
 
 /* Single Sports Background */
 @layer components {
-  .bg-sports {
-    background-image: url('new-sports-background'); /* Replace with your image path */
+.bg-sports {
+    background-image: url('/new-sports-background.jpg'); /* Ensure correct image path */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
