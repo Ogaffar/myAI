@@ -1,31 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 /* Base font settings */
 body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
- 
-/* Thematic Background for Cooking Assistant */
+
+/* Thematic Background for Sports */
 body {
   @apply text-foreground;
   background: url('/new-sports-background.png') no-repeat center center fixed;
   background-size: cover;
   background-blend-mode: overlay;
-  background-color: rgba(255, 230, 200, 0.6); /* Warm food-inspired tone */
+  background-color: rgba(255, 230, 200, 0.6); /* Warm sports-inspired tone */
 }
- 
+
 /* Dark mode adjustments */
 .dark body {
-  background: url('/ new-sports-background-black.png') no-repeat center center fixed;
+  background: url('/new-sports-background-black.png') no-repeat center center fixed;
   background-size: cover;
   background-blend-mode: overlay;
-  background-color: rgba(30, 30, 30, 0.8); /* Dark kitchen ambiance */
+  background-color: rgba(30, 30, 30, 0.8); /* Dark ambiance for sports */
 }
- 
+
 /* Ensure text remains readable over backgrounds */
 @layer base {
   * {
@@ -41,7 +41,7 @@ body {
     @apply font-medium tracking-tight;
   }
 }
- 
+
 /* Chat Bubble Styles */
 @layer components {
   /* General Chat Bubble Style */
@@ -50,20 +50,23 @@ body {
     background-color: rgba(50, 50, 50, 0.9); /* Darker color */
     color: #fff; /* Ensure text is readable */
     border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    transition: all 0.3s ease-in-out;
   }
  
   /* User Message (Align Right) */
   .chat-bubble-user {
     @apply ml-auto text-right bg-blue-600 relative;
     border-radius: 12px 12px 0 12px;
+    animation: slideInRight 0.5s ease-in-out;
   }
- 
+
   /* Bot Message (Align Left) */
   .chat-bubble-bot {
     @apply mr-auto text-left bg-gray-700 relative;
     border-radius: 12px 12px 12px 0;
+    animation: slideInLeft 0.5s ease-in-out;
   }
- 
+
   /* Chat Bubble Tail - Bot */
   .chat-bubble-bot::after {
     content: "";
@@ -76,7 +79,7 @@ body {
     border-width: 10px 12px 0 0;
     border-color: rgba(50, 50, 50, 0.9) transparent transparent transparent;
   }
- 
+
   /* Chat Bubble Tail - User */
   .chat-bubble-user::after {
     content: "";
@@ -89,13 +92,23 @@ body {
     border-width: 10px 0 0 12px;
     border-color: #2563eb transparent transparent transparent; /* Match user bubble color */
   }
- 
+
   /* Chat Container */
   .chat-container {
-    @apply flex flex-col space-y-2 p-4;
+    @apply flex flex-col space-y-4 p-4 bg-black bg-opacity-40 backdrop-blur-md rounded-lg;
+  }
+
+  /* User Input Area */
+  .chat-input {
+    @apply p-4 bg-white rounded-lg text-black shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+
+  /* Clear Chat Button */
+  .clear-chat-btn {
+    @apply bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg;
   }
 }
- 
+
 /* Responsive typography */
 @layer base {
   html {
@@ -117,9 +130,31 @@ body {
     }
   }
 }
- 
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
+/* Animations for chat bubbles */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
