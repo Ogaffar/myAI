@@ -9,115 +9,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Sports background utilities */
+/* Single Sports Background */
 @layer components {
-  /* Sports background patterns and images */
   .bg-sports {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23000000' fill-opacity='0.05' d='M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 90C28 90 10 72 10 50S28 10 50 10s40 18 40 40-18 40-40 40z'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-  }
-  
-  .bg-basketball {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff6b00' fill-opacity='0.08' d='M50 0c27.6 0 50 22.4 50 50S77.6 100 50 100 0 77.6 0 50 22.4 0 50 0zm0 2C23.5 2 2 23.5 2 50s21.5 48 48 48 48-21.5 48-48S76.5 2 50 2z'/%3E%3Cpath fill='%23ff6b00' fill-opacity='0.08' d='M50 0v100C22.4 100 0 77.6 0 50S22.4 0 50 0zM2 50c0 26.5 21.5 48 48 48V2C23.5 2 2 23.5 2 50z'/%3E%3Cpath fill='%23ff6b00' fill-opacity='0.08' d='M50 0c27.6 0 50 22.4 50 50H0C0 22.4 22.4 0 50 0zM2 48h96c-.9-25.6-21.9-46-47.5-46S3 22.4 2 48z'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-  }
-  
-  .bg-football {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23553c14' fill-opacity='0.07' d='M50 15l34.6 25.1-13.2 40.8H28.6L15.4 40.1 50 15zm0 3.7L20.2 41.2l10.9 33.8h37.8l10.9-33.8L50 18.7z'/%3E%3Cpath fill='%23553c14' fill-opacity='0.07' d='M50 24.1l22.7 16.5-8.7 26.8H36l-8.7-26.8L50 24.1zm0 3.7l-19 13.8 7.2 22.2h23.6l7.2-22.2-19-13.8z'/%3E%3Cpath fill='%23553c14' fill-opacity='0.07' d='M46 47h8v16h-8z'/%3E%3Cpath fill='%23553c14' fill-opacity='0.07' d='M42 50.9l16 .2.2 8-16 .2z'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-  }
-  
-  .bg-soccer {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle fill='%23000000' fill-opacity='0.06' cx='50' cy='50' r='40'/%3E%3Cpath fill='%23ffffff' fill-opacity='0.2' d='M50 10c22.1 0 40 17.9 40 40S72.1 90 50 90 10 72.1 10 50s17.9-40 40-40zm0 5c-19.3 0-35 15.7-35 35s15.7 35 35 35 35-15.7 35-35-15.7-35-35-35z'/%3E%3Cpath fill='%23000000' fill-opacity='0.06' d='M36.3 27.7l11.2-8.2 14.8 3.3 5.4 13.3-7.7 12.1-15.5.9-11.3-9 2.2-10.8zM61.4 73.6l-10.7 7.8L36.8 78l-5.1-12.7 7.3-11.5 14.7-.8 10.7 8.5-2.1 10.3z'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-  }
-  
-  .bg-tennis {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle fill='%23b8e986' fill-opacity='0.1' cx='50' cy='50' r='40'/%3E%3Cpath fill='%23ffffff' fill-opacity='0.15' d='M90 50c0 22.1-17.9 40-40 40S10 72.1 10 50c0-13.3 6.5-25.1 16.5-32.4C22.3 24.7 20 33 20 42c0 16.6 13.4 30 30 30s30-13.4 30-30c0-9-4-17.3-10.3-23-6.3-5.7-14.7-9-23.7-9-8.5 0-16.3 3-22.4 8C17 25.2 12.4 34 12 44h-.1c-1.3-13.7 7-27.4 21.1-34.4 5.5-2.7 11.4-4.1 17.5-4.1 6.1 0 12 1.4 17.5 4.1 5.5 2.7 10.3 6.6 14.1 11.5 3.9 4.9 6.6 10.6 7.7 16.8.6 3.1.9 6.3.9 9.5 0 3.2-.3 6.4-.9 9.5-1.1 6.2-3.8 11.9-7.7 16.8-3.9 4.9-8.6 8.8-14.1 11.5-5.5 2.7-11.4 4.1-17.5 4.1-6.1 0-12-1.4-17.5-4.1-14.1-7-22.4-20.7-21.1-34.4h.1c.4 10 5 18.8 11.6 25.2 6.1 5 13.9 8 22.4 8 9 0 17.4-3.3 23.7-9 6.3-5.7 10.3-14 10.3-23 0-9-4-17.3-10.3-23C67.4 22 59 18.7 50 18.7c-9 0-17.4 3.3-23.7 9C20 34 16 42.3 16 51.3c0 9 4 17.3 10.3 23 6.3 5.7 14.7 9 23.7 9 9 0 17.4-3.3 23.7-9 6.3-5.7 10.3-14 10.3-23 0-9-4-17.3-10.3-23-6.3-5.7-14.7-9-23.7-9-8.5 0-16.3 3-22.4 8-6.6 6.4-11.2 15.2-11.6 25.2h-.1c-1.3-13.7 7-27.4 21.1-34.4 5.5-2.7 11.4-4.1 17.5-4.1 6.1 0 12 1.4 17.5 4.1 14.1 7 22.4 20.7 21.1 34.4h-.1c-.4-10-5-18.8-11.6-25.2-6.1-5-13.9-8-22.4-8z'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-  }
-
-  /* Hero sports background with overlay */
-  .bg-sports-hero {
-    @apply relative overflow-hidden;
-  }
-
-  .bg-sports-hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 600 600'%3E%3Cpath fill='%23000000' fill-opacity='0.05' d='M300 0c165.7 0 300 134.3 300 300S465.7 600 300 600 0 465.7 0 300 134.3 0 300 0zm0 52.2c-136.8 0-247.8 111-247.8 247.8S163.2 547.8 300 547.8 547.8 436.8 547.8 300 436.8 52.2 300 52.2zM126.6 186.6l50.5-50.5C216.9 100.3 256 78.9 300 78.9c44 0 83.1 21.4 123 57.2l50.5 50.5 50.5 50.5c35.8 39.9 57.2 79 57.2 123 0 44-21.4 83.1-57.2 123l-50.5 50.5-50.5 50.5c-39.9 35.8-79 57.2-123 57.2-44 0-83.1-21.4-123-57.2l-50.5-50.5-50.5-50.5C40.3 383.1 18.9 344 18.9 300c0-44 21.4-83.1 57.2-123l50.5-50.5 50.5-50.5C216.9 100.3 256 78.9 300 78.9c44 0 83.1 21.4 123 57.2l36.4 36.4-25.5 25.5-36.4-36.4c-28.6-28.6-59.3-43.2-97.8-43.2-38.5 0-69.2 14.6-97.8 43.2l-36.4 36.4-36.4 36.4c-28.6 28.6-43.2 59.3-43.2 97.8 0 38.5 14.6 69.2 43.2 97.8l36.4 36.4 36.4 36.4c28.6 28.6 59.3 43.2 97.8 43.2 38.5 0 69.2-14.6 97.8-43.2l36.4-36.4 36.4-36.4c28.6-28.6 43.2-59.3 43.2-97.8 0-38.5-14.6-69.2-43.2-97.8l-36.4-36.4-36.4-36.4c-28.6-28.6-59.3-43.2-97.8-43.2-38.5 0-69.2 14.6-97.8 43.2l-36.4 36.4-25.5-25.5 36.4-36.4z'/%3E%3C/svg%3E");
+    background-image: url('/new-sports-background.jpg'); /* Replace with your image path */
     background-size: cover;
     background-position: center;
-    opacity: 0.15; /* Adjust this value to control the intensity */
-    z-index: -1;
-  }
-
-  /* Sports card styles with subtle sport textures */
-  .card-sports {
-    @apply relative rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl;
-    background-color: hsl(var(--card));
-  }
-
-  .card-sports::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+    background-repeat: no-repeat;
+    min-height: 100vh;
     width: 100%;
-    height: 100%;
-    opacity: 0.07;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .card-sports.basketball::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff6b00' d='M50 0v100C22.4 100 0 77.6 0 50S22.4 0 50 0zM2 50c0 26.5 21.5 48 48 48V2C23.5 2 2 23.5 2 50z'/%3E%3Cpath fill='%23ff6b00' d='M50 0c27.6 0 50 22.4 50 50H0C0 22.4 22.4 0 50 0zM2 48h96c-.9-25.6-21.9-46-47.5-46S3 22.4 2 48z'/%3E%3C/svg%3E");
-  }
-
-  .card-sports.football::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23553c14' d='M50 15l34.6 25.1-13.2 40.8H28.6L15.4 40.1 50 15zm0 5l-30 21.8 10 31.2h40l10-31.2-30-21.8z'/%3E%3Cpath fill='%23553c14' d='M46 47h8v15h-8z'/%3E%3C/svg%3E");
-  }
-
-  .card-sports.soccer::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle fill='%23000000' cx='50' cy='50' r='40'/%3E%3Cpath fill='%23ffffff' d='M50 10c22.1 0 40 17.9 40 40S72.1 90 50 90 10 72.1 10 50s17.9-40 40-40zm0 5c-19.3 0-35 15.7-35 35s15.7 35 35 35 35-15.7 35-35-15.7-35-35-35z'/%3E%3Cpath fill='%23000000' d='M36.3 27.7l11.2-8.2 14.8 3.3 5.4 13.3-7.7 12.1-15.5.9-11.3-9 2.2-10.8zM61.4 73.6l-10.7 7.8L36.8 78l-5.1-12.7 7.3-11.5 14.7-.8 10.7 8.5-2.1 10.3z'/%3E%3C/svg%3E");
-  }
-  
-  /* Additional sports-themed utility classes */
-  .sports-divider {
-    position: relative;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.2), transparent);
-  }
-  
-  .sports-divider::before {
-    content: "";
-    position: absolute;
-    top: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 10px;
-    height: 10px;
-    background-color: hsl(var(--primary) / 0.3);
-    border-radius: 50%;
   }
 }
 
+/* Sports-Themed Utility Classes */
 @layer utilities {
-  /* Text utilities */
-  .text-balance {
-    text-wrap: balance;
-  }
-  
-  /* Common utility classes can be added here */
-  .content-wrapper {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-  
-  /* Sports-themed utilities */
   .text-stroke-light {
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
   }
@@ -126,197 +31,64 @@ body {
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
   }
   
-  /* Athletic-inspired gradient backgrounds */
+  .content-wrapper {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
   .bg-gradient-team-blue {
     background: linear-gradient(135deg, hsl(214, 100%, 60%) 0%, hsl(214, 100%, 40%) 100%);
   }
-  
+
   .bg-gradient-team-red {
     background: linear-gradient(135deg, hsl(0, 100%, 65%) 0%, hsl(0, 100%, 45%) 100%);
   }
-  
+
   .bg-gradient-team-green {
     background: linear-gradient(135deg, hsl(142, 77%, 55%) 0%, hsl(142, 77%, 35%) 100%);
   }
 }
 
-@layer base {
-  :root {
-    /* Core colors */
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
-    
-    /* Component colors */
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    
-    /* Semantic colors */
-    --primary: 222 47% 11%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222 47% 11%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    
-    /* Border and input colors */
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 222 47% 11%;
-    
-    /* Data visualization colors (more distinct) */
-    --chart-1: 222 89% 58%;  /* Blue */
-    --chart-2: 143 55% 48%;  /* Green */
-    --chart-3: 24 75% 55%;   /* Orange */
-    --chart-4: 262 60% 55%;  /* Purple */
-    --chart-5: 340 82% 59%;  /* Pink */
-    --chart-6: 194 80% 45%;  /* Teal */
-    
-    /* Sports team colors */
-    --team-blue: 214 100% 50%;
-    --team-red: 0 100% 50%;
-    --team-green: 142 77% 45%;
-    --team-yellow: 48 100% 50%;
-    --team-purple: 273 100% 50%;
-    
-    /* Rounded corners */
-    --radius: 0.5rem;
-  }
-  
-  .dark {
-    /* Core colors */
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-    
-    /* Component colors */
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
-    
-    /* Semantic colors */
-    --primary: 210 40% 98%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 217 32% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 32% 17%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 32% 17%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 210 40% 98%;
-    
-    /* Border and input colors */
-    --border: 217 32% 17%;
-    --input: 217 32% 17%;
-    --ring: 212 40% 86%;
-    
-    /* Data visualization colors (adjusted for dark mode) */
-    --chart-1: 214 100% 70%;  /* Blue */
-    --chart-2: 142 77% 65%;   /* Green */
-    --chart-3: 32 95% 65%;    /* Orange */
-    --chart-4: 273 100% 75%;  /* Purple */
-    --chart-5: 336 100% 70%;  /* Pink */
-    --chart-6: 195 80% 65%;   /* Teal */
-    
-    /* Sports team colors (adjusted for dark mode) */
-    --team-blue: 214 100% 65%;
-    --team-red: 0 100% 65%;
-    --team-green: 142 77% 60%;
-    --team-yellow: 48 100% 65%;
-    --team-purple: 273 100% 65%;
-  }
-}
-
-/* Apply border styles and background consistently */
+/* Global Styles & Typography */
 @layer base {
   * {
     @apply border-border;
   }
-  
+
   body {
     @apply bg-background text-foreground;
   }
-  
-  /* Improved focus styles for accessibility */
+
   :focus-visible {
-    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+    @apply outline-none ring-2 ring-ring ring-offset-2;
   }
-  
-  /* Headings with consistent styling */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-medium tracking-tight;
-  }
-  
-  /* Athletics-inspired heading styles */
+
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl font-bold;
-    letter-spacing: -0.025em;
   }
-  
+
   h2 {
     @apply text-3xl md:text-4xl font-bold;
-    letter-spacing: -0.025em;
   }
 }
 
-/* Adding responsive typography scale */
-@layer base {
-  html {
-    font-size: 16px;
-  }
-  
-  @screen sm {
-    html {
-      font-size: 16px;
-    }
-  }
-  
-  @screen md {
-    html {
-      font-size: 16.5px;
-    }
-  }
-  
-  @screen lg {
-    html {
-      font-size: 17px;
-    }
-  }
-}
-
-/* Add smooth scrolling */
+/* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Sports-themed animations */
+/* Animations */
 @keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .animate-bounce-slow {
   animation: bounce 3s ease-in-out infinite;
 }
 
-/* Score ticker animation */
 @keyframes score-ticker {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .score-ticker {
