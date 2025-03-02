@@ -3,6 +3,7 @@ import ChatInput from "@/components/chat/input";
 import ChatMessages from "@/components/chat/messages";
 import ChatHeader from "@/components/chat/header";
 import useApp from "@/hooks/use-app";
+
 export default function Chat() {
   const {
     messages,
@@ -13,13 +14,14 @@ export default function Chat() {
     handleSubmit,
     clearMessages,
   } = useApp();
+  
   return (
-    <div className="flex flex-col h-screen w-full">
+    <div className="flex flex-col h-screen w-full overflow-hidden">
       <ChatHeader clearMessages={clearMessages} />
       
-      <main className="flex-1 overflow-hidden w-full">
-        <div className="container mx-auto h-full max-w-screen-lg flex flex-col p-4 w-full">
-          <div className="flex-1 overflow-y-auto w-full">
+      <main className="flex-1 w-full overflow-hidden relative">
+        <div className="absolute inset-0 overflow-y-auto">
+          <div className="container mx-auto h-full max-w-screen-lg p-4">
             <ChatMessages 
               messages={messages} 
               indicatorState={indicatorState} 
@@ -27,6 +29,7 @@ export default function Chat() {
           </div>
         </div>
       </main>
+      
       <footer className="border-t w-full">
         <div className="container mx-auto max-w-screen-lg p-4">
           <ChatInput
