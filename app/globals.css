@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 /* Base font settings */
 body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
@@ -8,13 +9,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
   @apply text-foreground;
 }
+
 /* Thematic Background for Sports with Black Background */
 body {
   background: url('/new-sports-background.png') no-repeat center center fixed;
   background-size: cover;
   background-blend-mode: darken; /* Darkens the image */
   background-color: rgba(0, 0, 0, 0.6); /* Black with opacity */
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
+
 /* Dark mode adjustments with Black Background */
 .dark body {
   background: url('/new-sports-background-black.png') no-repeat center center fixed;
@@ -22,6 +30,7 @@ body {
   background-blend-mode: darken; /* Darken the image for dark mode */
   background-color: rgba(0, 0, 0, 0.8); /* Black with opacity */
 }
+
 /* Ensure text remains readable over backgrounds */
 @layer base {
   * {
@@ -37,6 +46,7 @@ body {
     @apply font-medium tracking-tight;
   }
 }
+
 /* Chat Bubble Styles */
 @layer components {
   .chat-bubble {
@@ -71,8 +81,6 @@ body {
   }
 }
 
-/* Removed the scroll-line class that was causing issues */
-
 /* Custom scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
@@ -95,6 +103,8 @@ body {
 @layer base {
   html {
     font-size: 16px;
+    width: 100%;
+    overflow-x: hidden;
   }
   @screen sm {
     html {
@@ -112,7 +122,13 @@ body {
     }
   }
 }
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Make sure all main containers are full width */
+#__next, main {
+  width: 100%;
 }
