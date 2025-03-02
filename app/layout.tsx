@@ -37,7 +37,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <ErrorWrapper>{children}</ErrorWrapper>
           </TooltipProvider>
         </div>
-        {/* Removed the scrolling line for proper scrollbar positioning */}
       </body>
     </html>
   );
