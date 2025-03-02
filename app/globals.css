@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 /* Base font settings */
 body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
@@ -9,7 +8,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   @apply text-foreground;
 }
-
 /* Thematic Background for Sports with Black Background */
 body {
   background: url('/new-sports-background.png') no-repeat center center fixed;
@@ -17,7 +15,6 @@ body {
   background-blend-mode: darken; /* Darkens the image */
   background-color: rgba(0, 0, 0, 0.6); /* Black with opacity */
 }
-
 /* Dark mode adjustments with Black Background */
 .dark body {
   background: url('/new-sports-background-black.png') no-repeat center center fixed;
@@ -25,7 +22,6 @@ body {
   background-blend-mode: darken; /* Darken the image for dark mode */
   background-color: rgba(0, 0, 0, 0.8); /* Black with opacity */
 }
-
 /* Ensure text remains readable over backgrounds */
 @layer base {
   * {
@@ -41,7 +37,6 @@ body {
     @apply font-medium tracking-tight;
   }
 }
-
 /* Chat Bubble Styles */
 @layer components {
   .chat-bubble {
@@ -51,46 +46,49 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
     transition: all 0.3s ease-in-out;
   }
-
   /* User and Bot Messages */
   .chat-bubble-user {
     @apply ml-auto text-right bg-blue-600 relative;
     border-radius: 12px 12px 0 12px;
     animation: slideInRight 0.5s ease-in-out;
   }
-
   .chat-bubble-bot {
     @apply mr-auto text-left bg-gray-700 relative;
     border-radius: 12px 12px 12px 0;
     animation: slideInLeft 0.5s ease-in-out;
   }
-
   /* Chat Container */
   .chat-container {
     @apply flex flex-col space-y-4 p-4 bg-black bg-opacity-40 backdrop-blur-md rounded-lg;
   }
-
   /* Input Area */
   .chat-input {
     @apply p-4 bg-white rounded-lg text-black shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500;
   }
-
   /* Clear Chat Button */
   .clear-chat-btn {
     @apply bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg;
   }
 }
 
-/* Scrolling line fixed to the right */
-.scroll-line {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 2px; /* Adjust thickness */
-  height: 100%;
-  background-color: #fff; /* Color of the line */
-  z-index: 9999; /* Ensure it's above other elements */
-  pointer-events: none; /* Prevent it from interfering with other UI elements */
+/* Removed the scroll-line class that was causing issues */
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* Responsive typography */
@@ -114,7 +112,6 @@ body {
     }
   }
 }
-
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
