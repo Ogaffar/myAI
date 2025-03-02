@@ -20,7 +20,7 @@ function UserMessage({ message }: { message: DisplayMessage }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="flex flex-1 py-1 justify-end"
+      className="flex flex-1 py-1 justify-end w-full"
     >
       <motion.div
         whileHover={{ scale: 1.01 }}
@@ -39,7 +39,7 @@ function AssistantMessage({ message }: { message: DisplayMessage }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="flex flex-1 py-1 justify-start gap-[5px]"
+      className="flex flex-1 py-1 justify-start gap-[5px] w-full"
     >
       <div className="w-9 flex items-end">{<AILogo />}</div>
       <motion.div
@@ -55,7 +55,7 @@ function AssistantMessage({ message }: { message: DisplayMessage }) {
 
 function EmptyMessages() {
   return (
-    <div className="flex flex-col flex-1 p-1 gap-3 justify-center items-center">
+    <div className="flex flex-col flex-1 p-1 gap-3 justify-center items-center w-full">
       <p className="text-gray-500">Ask a question to start the conversation</p>
     </div>
   );
@@ -72,13 +72,12 @@ export default function ChatMessages({
     indicatorState.length > 0 &&
     messages.length > 0 &&
     messages[messages.length - 1].role === "user";
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="flex flex-col flex-1 p-1 gap-3"
+      className="flex flex-col flex-1 p-1 gap-3 w-full"
     >
       <div className="h-[60px]"></div>
       {messages.length === 0 ? (
@@ -90,6 +89,7 @@ export default function ChatMessages({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
+            className="w-full"
           >
             {message.role === "user" ? (
               <UserMessage message={message} />
