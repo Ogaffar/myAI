@@ -53,7 +53,7 @@ export default function AboutSection() {
                 style={{ aspectRatio: "3/4", zIndex: 1 }}
               >
                 <Image
-                  src="/headshot.jpg"
+                  src="/headshot.png"
                   alt="Zainab Olayiwola, PharmD — PGY-1 Pharmacy Resident at Ascension St. Vincent Evansville"
                   fill
                   className="object-cover"
