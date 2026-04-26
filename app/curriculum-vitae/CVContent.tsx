@@ -165,12 +165,12 @@ const COMMUNITY_SERVICE = [
 const EDUCATION = [
   {
     degree: "Doctor of Pharmacy (PharmD)",
-    institution: "Midwestern University Chicago College of Pharmacy",
+    institution: "University of Illinois Chicago College of Pharmacy",
     year: "2018",
   },
   {
     degree: "Bachelor of Science in Pharmaceutical Sciences",
-    institution: "Midwestern University",
+    institution: "University of Illinois Chicago",
     year: "2016",
   },
 ] as const;
