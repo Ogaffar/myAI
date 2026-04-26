@@ -171,7 +171,7 @@ const EDUCATION = [
   {
     degree: "Bachelor of Science in Pharmaceutical Sciences",
     institution: "University of Illinois Chicago",
-    year: "2016",
+    year: "2014",
   },
 ] as const;
 
