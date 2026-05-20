@@ -32,6 +32,20 @@ const PORTFOLIO_CARDS = [
       "A presentation on building safety cultures in inpatient pharmacy — balancing accountability with learning through the lens of High Reliability Organizations.",
     href: "/evidence-of-teaching/high-reliability",
   },
+  {
+    category: "Oncology",
+    title: "Optimizing Management of CINV",
+    description:
+      "A comprehensive review of CINV classification, emetogenic risk stratification, and antiemetic prophylaxis strategies per NCCN guidelines.",
+    href: "/evidence-of-teaching/cinv",
+  },
+  {
+    category: "Critical Care / Nephrology",
+    title: "IV Vancomycin Dosing in a Peritoneal Dialysis Patient",
+    description:
+      "A patient case applying sepsis diagnostics and vancomycin pharmacokinetic principles to a high-complexity patient with ESRD on peritoneal dialysis.",
+    href: "/evidence-of-teaching/vancomycin-pd",
+  },
 ] as const;
 
 function PortfolioCard({
@@ -141,17 +155,42 @@ function PortfolioPreviewSection() {
           </h2>
         </motion.div>
 
-        {/* Cards grid */}
-        <div className="grid gap-6 md:grid-cols-3">
+        {/* Cards grid — 3-up row 1, 2-up centered row 2 */}
+        <div className="grid grid-cols-6 gap-6">
           {PORTFOLIO_CARDS.map((card, i) => (
-            <PortfolioCard
+            <div
               key={card.href}
-              {...card}
-              delay={0.1 + i * 0.12}
-              inView={inView}
-            />
+              className={`col-span-6 sm:col-span-3 ${i < 3 ? "lg:col-span-2" : "lg:col-span-3"}`}
+            >
+              <PortfolioCard
+                {...card}
+                delay={0.1 + i * 0.1}
+                inView={inView}
+              />
+            </div>
           ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.65, ease: EASE }}
+          className="mt-10 text-center"
+        >
+          <Link
+            href="/evidence-of-teaching"
+            className="font-body font-medium transition-opacity duration-200 hover:opacity-70"
+            style={{
+              fontSize: "0.9rem",
+              color: "var(--color-accent)",
+              borderBottom: "1px solid var(--color-accent)",
+              paddingBottom: "2px",
+            }}
+          >
+            View All Presentations →
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
