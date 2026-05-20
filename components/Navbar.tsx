@@ -7,19 +7,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useScrollPosition } from "@/lib/hooks";
 
 const EVIDENCE_ITEMS = [
-  { label: "VTE in Oncology", href: "/evidence-of-teaching/vte-oncology" },
+  { label: "Didactic Lecture", href: "/evidence-of-teaching/didactic-lecture" },
   {
-    label: "Daptomycin vs. Vancomycin",
-    href: "/evidence-of-teaching/daptomycin-vancomycin",
+    label: "Small Group Facilitation",
+    href: "/evidence-of-teaching/small-group-facilitation",
   },
   {
-    label: "High Reliability & Just Culture",
-    href: "/evidence-of-teaching/high-reliability",
-  },
-  { label: "CINV Management", href: "/evidence-of-teaching/cinv" },
-  {
-    label: "Vancomycin Dosing in PD",
-    href: "/evidence-of-teaching/vancomycin-pd",
+    label: "Experiential Precepting",
+    href: "/evidence-of-teaching/experiential-precepting",
   },
 ] as const;
 
