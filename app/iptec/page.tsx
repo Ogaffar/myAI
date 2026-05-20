@@ -140,19 +140,10 @@ export default function IptecIndexPage() {
             {CARDS.map((card, i) => (
               <AnimatedSection key={card.id} delay={i * 0.08}>
                 <div
-                  className="flex h-full flex-col rounded-[1.25rem] border bg-white transition-all duration-300 hover:-translate-y-1"
+                  className="flex h-full flex-col rounded-[1.25rem] border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                   style={{
                     borderColor: "var(--color-border)",
                     padding: "2rem",
-                    boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLDivElement).style.boxShadow =
-                      "0 8px 24px rgba(0,0,0,0.1)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLDivElement).style.boxShadow =
-                      "0 1px 3px rgba(0,0,0,0.06)";
                   }}
                 >
                   {card.icon && (
