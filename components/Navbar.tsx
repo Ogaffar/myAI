@@ -16,20 +16,29 @@ const EVIDENCE_ITEMS = [
     label: "High Reliability & Just Culture",
     href: "/evidence-of-teaching/high-reliability",
   },
+  { label: "CINV Management", href: "/evidence-of-teaching/cinv" },
+  {
+    label: "Vancomycin Dosing in PD",
+    href: "/evidence-of-teaching/vancomycin-pd",
+  },
+] as const;
+
+const IPTEC_ITEMS = [
+  { label: "Teaching Log", href: "/iptec/teaching-log" },
+  { label: "Midpoint Evaluation", href: "/iptec/midpoint-evaluation" },
+  { label: "Final Evaluation", href: "/iptec/final-evaluation" },
 ] as const;
 
 const DESKTOP_NAV = [
   { label: "Home", href: "/" },
   { label: "Teaching Philosophy", href: "/teaching-philosophy" },
   { label: "Research", href: "/research" },
-  { label: "Curriculum Vitae", href: "/curriculum-vitae" },
 ] as const;
 
 const MOBILE_NAV = [
   { label: "Home", href: "/" },
   { label: "Teaching Philosophy", href: "/teaching-philosophy" },
   { label: "Research", href: "/research" },
-  { label: "Curriculum Vitae", href: "/curriculum-vitae" },
 ] as const;
 
 export default function Navbar() {
@@ -37,12 +46,17 @@ export default function Navbar() {
   const scrollY = useScrollPosition();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [evidenceOpen, setEvidenceOpen] = useState(false);
+  const [iptecOpen, setIptecOpen] = useState(false);
   const [mobileEvidenceOpen, setMobileEvidenceOpen] = useState(false);
+  const [mobileIptecOpen, setMobileIptecOpen] = useState(false);
   const hoverTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const iptecHoverTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   // Refs for keyboard focus management
   const dropdownButtonRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLUListElement>(null);
+  const iptecButtonRef = useRef<HTMLButtonElement>(null);
+  const iptecDropdownRef = useRef<HTMLUListElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const closeMobileRef = useRef<HTMLButtonElement>(null);
 
@@ -77,13 +91,17 @@ export default function Navbar() {
     }
   }, [mobileOpen]);
 
-  // Clean up hover timer on unmount
-  useEffect(() => () => clearTimeout(hoverTimer.current), []);
+  // Clean up hover timers on unmount
+  useEffect(() => () => {
+    clearTimeout(hoverTimer.current);
+    clearTimeout(iptecHoverTimer.current);
+  }, []);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   const isEvidenceActive = EVIDENCE_ITEMS.some((i) => pathname === i.href);
+  const isIptecActive = IPTEC_ITEMS.some((i) => pathname === i.href);
 
   const openDropdown = () => {
     clearTimeout(hoverTimer.current);
@@ -93,6 +111,16 @@ export default function Navbar() {
   const closeDropdown = () => {
     clearTimeout(hoverTimer.current);
     hoverTimer.current = setTimeout(() => setEvidenceOpen(false), 150);
+  };
+
+  const openIptec = () => {
+    clearTimeout(iptecHoverTimer.current);
+    iptecHoverTimer.current = setTimeout(() => setIptecOpen(true), 200);
+  };
+
+  const closeIptec = () => {
+    clearTimeout(iptecHoverTimer.current);
+    iptecHoverTimer.current = setTimeout(() => setIptecOpen(false), 150);
   };
 
   const closeMobile = () => setMobileOpen(false);
@@ -127,6 +155,41 @@ export default function Navbar() {
       e.preventDefault();
       if (index === 0) {
         dropdownButtonRef.current?.focus();
+      } else {
+        (items?.[index - 1] as HTMLElement | undefined)?.focus();
+      }
+    }
+  }
+
+  function handleIptecKeyDown(e: React.KeyboardEvent<HTMLButtonElement>) {
+    if (e.key === "Escape") {
+      setIptecOpen(false);
+    } else if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      clearTimeout(iptecHoverTimer.current);
+      setIptecOpen(true);
+      requestAnimationFrame(() => {
+        (iptecDropdownRef.current?.querySelector("a") as HTMLElement | null)?.focus();
+      });
+    }
+  }
+
+  function handleIptecItemKeyDown(
+    e: React.KeyboardEvent<HTMLAnchorElement>,
+    index: number
+  ) {
+    const items = iptecDropdownRef.current?.querySelectorAll("a");
+    if (e.key === "Escape") {
+      e.preventDefault();
+      setIptecOpen(false);
+      iptecButtonRef.current?.focus();
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      (items?.[index + 1] as HTMLElement | undefined)?.focus();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (index === 0) {
+        iptecButtonRef.current?.focus();
       } else {
         (items?.[index - 1] as HTMLElement | undefined)?.focus();
       }
@@ -265,6 +328,95 @@ export default function Navbar() {
                   </motion.ul>
                 )}
               </AnimatePresence>
+            </li>
+
+            {/* IPTeC Portfolio dropdown */}
+            <li
+              className="relative"
+              onMouseEnter={openIptec}
+              onMouseLeave={closeIptec}
+            >
+              <button
+                ref={iptecButtonRef}
+                aria-haspopup="listbox"
+                aria-expanded={iptecOpen}
+                aria-label="IPTeC Portfolio — expand submenu"
+                onKeyDown={handleIptecKeyDown}
+                className={[
+                  "nav-link-hover relative flex items-center gap-1 px-3 py-1 text-sm transition-colors duration-200",
+                  transparent
+                    ? "text-white/90 hover:text-white"
+                    : isIptecActive
+                      ? "text-[var(--color-accent)]"
+                      : "text-[var(--color-text-primary)] hover:text-[var(--color-accent)]",
+                ].join(" ")}
+              >
+                IPTeC Portfolio
+                <svg
+                  className={`h-3.5 w-3.5 transition-transform duration-200 ${iptecOpen ? "-rotate-180" : ""}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+                {isIptecActive && !transparent && (
+                  <span className="absolute -bottom-0.5 left-3 right-3 h-[2px] rounded-full bg-[var(--color-gold)]" />
+                )}
+              </button>
+
+              <AnimatePresence>
+                {iptecOpen && (
+                  <motion.ul
+                    ref={iptecDropdownRef}
+                    role="listbox"
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="absolute left-0 top-[calc(100%+10px)] w-56 rounded-xl border border-[var(--color-border)] bg-white p-2 shadow-medium"
+                    onMouseEnter={openIptec}
+                    onMouseLeave={closeIptec}
+                  >
+                    {IPTEC_ITEMS.map((item, index) => (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          onClick={() => setIptecOpen(false)}
+                          onKeyDown={(e) => handleIptecItemKeyDown(e, index)}
+                          className={[
+                            "block rounded-lg px-4 py-2.5 text-sm transition-colors duration-150",
+                            pathname === item.href
+                              ? "bg-[var(--color-accent-light)] text-[var(--color-accent)]"
+                              : "text-[var(--color-text-primary)] hover:bg-[var(--color-accent-light)] hover:text-[var(--color-accent)]",
+                          ].join(" ")}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </motion.ul>
+                )}
+              </AnimatePresence>
+            </li>
+
+            {/* Curriculum Vitae direct link */}
+            <li>
+              <Link
+                href="/curriculum-vitae"
+                className={desktopLinkClass(isActive("/curriculum-vitae"))}
+              >
+                Curriculum Vitae
+                {isActive("/curriculum-vitae") && !transparent && (
+                  <span className="absolute -bottom-0.5 left-3 right-3 h-[2px] rounded-full bg-[var(--color-gold)]" />
+                )}
+              </Link>
             </li>
 
             {/* Contact — CTA button */}
@@ -442,6 +594,78 @@ export default function Navbar() {
                   )}
                 </AnimatePresence>
               </div>
+
+              {/* IPTeC Portfolio accordion */}
+              <div className="border-b border-[var(--color-border)]">
+                <button
+                  onClick={() => setMobileIptecOpen((o) => !o)}
+                  className={[
+                    "flex w-full items-center justify-between py-5 font-display text-[2rem] font-medium leading-tight transition-colors",
+                    isIptecActive
+                      ? "text-[var(--color-accent)]"
+                      : "text-[var(--color-text-primary)]",
+                  ].join(" ")}
+                >
+                  IPTeC Portfolio
+                  <svg
+                    className={`h-5 w-5 flex-shrink-0 transition-transform duration-200 ${mobileIptecOpen ? "-rotate-180" : ""}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {mobileIptecOpen && (
+                    <motion.ul
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      {IPTEC_ITEMS.map((item) => (
+                        <li key={item.href}>
+                          <Link
+                            href={item.href}
+                            onClick={closeMobile}
+                            className={[
+                              "block py-3 pl-4 font-body text-base transition-colors",
+                              pathname === item.href
+                                ? "text-[var(--color-accent)]"
+                                : "text-[var(--color-text-secondary)] hover:text-[var(--color-accent)]",
+                            ].join(" ")}
+                          >
+                            {item.label}
+                          </Link>
+                        </li>
+                      ))}
+                      <div className="h-3" />
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Curriculum Vitae mobile link */}
+              <Link
+                href="/curriculum-vitae"
+                onClick={closeMobile}
+                className={[
+                  "block border-b border-[var(--color-border)] py-5 font-display text-[2rem] font-medium leading-tight transition-colors",
+                  pathname === "/curriculum-vitae"
+                    ? "text-[var(--color-accent)]"
+                    : "text-[var(--color-text-primary)] hover:text-[var(--color-accent)]",
+                ].join(" ")}
+              >
+                Curriculum Vitae
+              </Link>
 
               {/* Contact CTA */}
               <div className="mt-10">

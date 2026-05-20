@@ -3,7 +3,8 @@ import Link from "next/link";
 const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Teaching Philosophy", href: "/teaching-philosophy" },
-  { label: "Evidence of Teaching", href: "/evidence-of-teaching/vte-oncology" },
+  { label: "Evidence of Teaching", href: "/evidence-of-teaching" },
+  { label: "IPTeC Portfolio", href: "/iptec" },
   { label: "Research", href: "/research" },
   { label: "Curriculum Vitae", href: "/curriculum-vitae" },
   { label: "Contact", href: "/contact" },
