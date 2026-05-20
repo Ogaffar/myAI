@@ -26,14 +26,36 @@ const TEACHING_ROLES = [
     institution: "Butler University · January–April 2026",
     description:
       "Facilitated small group case study discussions, using open-ended questions to develop students' independent clinical reasoning.",
+    materialHref: "/neutropenic-fever-case.pdf",
+    materialLabel: "View Teaching Case: Neutropenic Fever & Vancomycin →",
   },
   {
     title: "Lab Coordinator — P1 MTM & Medication History Lab",
     institution: "Purdue University · September 2025",
     description:
       "Facilitated simulated clinical interviews for first-year pharmacy students, serving as primary evaluator for mock interviews and medication history assessments. Graded performance using standardized rubrics across patient rapport, active listening, and clinical accuracy. Provided real-time constructive feedback focused on identifying medication discrepancies and collecting pertinent social and medical histories.",
+    materialHref: "/mtm-rubric.pdf",
+    materialLabel: "View Sample Grading Rubric (MTM Lab) →",
   },
 ] as const;
+
+function DocIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="flex-shrink-0">
+      <rect x="2" y="1.5" width="8" height="11" rx="1" stroke="currentColor" strokeWidth="1.1" />
+      <path d="M4 5h4M4 7h4M4 9h2.5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function CheckCircleIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="flex-shrink-0 mt-0.5">
+      <circle cx="7" cy="7" r="6" fill="var(--color-accent-light)" />
+      <path d="M4.5 7l2 2 3-3.5" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 function SidebarCard({
   heading,
@@ -235,8 +257,58 @@ export default function TeachingContent() {
                     >
                       {role.description}
                     </p>
+                    <a
+                      href={role.materialHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-body transition-colors duration-150 hover:underline"
+                      style={{
+                        fontSize: "0.775rem",
+                        color: "var(--color-accent)",
+                        marginTop: "0.5rem",
+                      }}
+                    >
+                      <DocIcon />
+                      {role.materialLabel}
+                    </a>
                   </div>
                 ))}
+              </SidebarCard>
+
+              {/* Card 3 — Formal Evaluation */}
+              <SidebarCard heading="Formal Evaluation">
+                <div className="flex flex-col gap-1.5">
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircleIcon />
+                    <div>
+                      <p
+                        className="font-body text-text-primary"
+                        style={{ fontSize: "0.875rem", lineHeight: "1.45" }}
+                      >
+                        Pharmacy Residency Presentation Evaluation Form
+                      </p>
+                      <p
+                        className="font-body text-text-muted"
+                        style={{ fontSize: "0.775rem", marginTop: "0.2rem" }}
+                      >
+                        Critical Appraisal · Ascension St. Vincent Evansville
+                      </p>
+                      <a
+                        href="/presentation-evaluation.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block font-body transition-colors duration-150 hover:underline"
+                        style={{
+                          fontSize: "0.775rem",
+                          color: "var(--color-accent)",
+                          marginTop: "0.4rem",
+                        }}
+                      >
+                        View Evaluation Form →
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </SidebarCard>
             </motion.aside>
 
