@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PortfolioPageLayout from "@/components/PortfolioPageLayout";
 
 export const metadata: Metadata = {
@@ -9,7 +10,8 @@ export const metadata: Metadata = {
 
 export default function DaptomycinVancomycinPage() {
   return (
-    <PortfolioPageLayout
+    <>
+      <PortfolioPageLayout
       label="Evidence of Teaching"
       title="Vancomycin vs. Daptomycin: An Evidence-Based Framework for MRSA"
       subtitle="A comprehensive, evidence-based comparison of two frontline agents for inpatient MRSA infections, with a clinical decision framework for pharmacists."
@@ -44,5 +46,26 @@ export default function DaptomycinVancomycinPage() {
       ]}
       badge="Nephrology Rotation"
     />
+
+      <div
+        className="bg-white"
+        style={{ padding: "0 0 4rem 0", display: "flex", justifyContent: "center" }}
+      >
+        <Link
+          href="/daptomycin-vancomycin.pdf"
+          download
+          aria-label="Download Daptomycin vs. Vancomycin presentation slides as PDF"
+          className="inline-flex items-center gap-2.5 rounded-full font-body font-medium text-white transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
+          style={{
+            backgroundColor: "var(--color-accent)",
+            padding: "0.75rem 1.5rem",
+            fontSize: "0.9rem",
+          }}
+        >
+          <span style={{ fontSize: "1rem" }}>↓</span>
+          Download Slides (PDF)
+        </Link>
+      </div>
+    </>
   );
 }
