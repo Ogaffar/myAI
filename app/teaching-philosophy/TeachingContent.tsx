@@ -5,12 +5,6 @@ import PageHeader from "@/components/PageHeader";
 
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
-const BODY_PARAGRAPHS = [
-  "Having spent seven years in community pharmacy, including five years in management, I have seen firsthand that a leader's primary responsibility is to build the potential of those around them. I approach leadership by identifying the unique strengths of my team members and providing them with the grace to grow — the space to develop their skills and confidence through patient guidance and mentorship.",
-  "However, I believe that grace and accountability are not mutually exclusive; rather, they are the twin pillars of a high-functioning environment. By holding my team to clear standards, I empower them to take ownership of their roles.",
-  "This philosophy extends directly to my clinical practice. I believe in modeling the change I wish to see in the profession. Whether I am managing a busy pharmacy or navigating the complexities of clinical care during my residency, I set the same rigorous expectations for myself that I do for others. Leading by example is not just a strategy; it is a commitment to integrity that ensures my patients receive the most dedicated, resourceful, and empathetic care possible.",
-  "In the teaching setting, I focus on asking mentally stimulating, open-ended questions that push students to critically evaluate complex clinical scenarios rather than arrive at surface-level answers. I believe the best educators do not simply transfer knowledge — they cultivate the mindset to apply it. As a Lab Coordinator at Purdue University, I put this into practice by facilitating simulated clinical interviews for first-year pharmacy students, serving as their primary evaluator and providing real-time constructive feedback on patient rapport, active listening, and clinical accuracy. The goal was never perfection in the simulation — it was to make every session a genuine learning event.",
-] as const;
 
 const CORE_VALUES = [
   "Compassion over protocol",
@@ -114,7 +108,7 @@ export default function TeachingContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
             >
-              {/* Lede — large opening sentence */}
+              {/* Opening lede */}
               <p
                 className="font-body font-normal text-text-primary"
                 style={{
@@ -123,27 +117,87 @@ export default function TeachingContent() {
                   marginBottom: "2rem",
                 }}
               >
-                My professional philosophy is rooted in the belief that the
-                highest level of care is achieved only when compassion and
-                resourcefulness work in tandem.
+                As a clinical pharmacist, my primary objective as an educator is to help
+                transition pharmacy students from passive learners into independent, critically
+                thinking professionals.
               </p>
 
-              {/* Body paragraphs */}
-              {BODY_PARAGRAPHS.map((paragraph, i) => (
-                <p
-                  key={i}
-                  className="font-body text-text-secondary"
-                  style={{
-                    fontSize: "1rem",
-                    lineHeight: "1.85",
-                    marginBottom: "1.5rem",
-                  }}
-                >
-                  {paragraph}
-                </p>
-              ))}
+              {/* Paragraph 1 */}
+              <p
+                className="font-body text-text-secondary"
+                style={{ fontSize: "1rem", lineHeight: "1.85", marginBottom: "1.5rem" }}
+              >
+                My goal as an educator is to ensure that the concepts we discuss are not just
+                memorized for an exam, but can be applied independently to real-world clinical
+                practice. In the rapidly evolving landscape of healthcare, I strive to equip
+                students with a structured learning framework for evidence-based
+                decision-making so they can confidently advocate for optimal patient care
+                at the bedside.
+              </p>
 
-              {/* Styled blockquote */}
+              {/* Subheading 1 */}
+              <h3
+                className="font-display font-medium text-text-primary"
+                style={{ fontSize: "1.25rem", margin: "1.75rem 0 0.75rem 0" }}
+              >
+                The Clinical Classroom: Interactive Methodology in Practice
+              </h3>
+
+              {/* Paragraph 2 */}
+              <p
+                className="font-body text-text-secondary"
+                style={{ fontSize: "1rem", lineHeight: "1.85", marginBottom: "1.5rem" }}
+              >
+                To foster independent thinking, I utilize a collaborative and engaging approach
+                to teaching. I view case presentations and discussions as a bidirectional learning
+                opportunity where both the learner and I can challenge and evaluate our
+                understanding of clinical practice. To ensure comprehension and bridge the gap
+                between theory and practice, I routinely implement targeted knowledge checks
+                and patient case examples to reiterate core concepts. Rather than lecturing
+                statically, I ask open-ended questions that encourage students to share their
+                thought processes, allowing me to evaluate their clinical reasoning in real time
+                and guide them toward justifiable, evidence-based recommendations.
+              </p>
+
+              {/* Subheading 2 */}
+              <h3
+                className="font-display font-medium text-text-primary"
+                style={{ fontSize: "1.25rem", margin: "1.75rem 0 0.75rem 0" }}
+              >
+                Cultivating a Supportive Environment and Continuous Growth
+              </h3>
+
+              {/* Paragraph 3 */}
+              <p
+                className="font-body text-text-secondary"
+                style={{ fontSize: "1rem", lineHeight: "1.85", marginBottom: "1.5rem" }}
+              >
+                Effective learning requires a safe psychological environment where students
+                feel empowered to acknowledge gaps in their knowledge and view them as
+                opportunities to grow. I emphasize open, transparent communication and
+                establish clear expectations from day one. I am deeply committed to providing
+                constructive, real-time feedback that is actionable and specific. I believe
+                education is an evolving practice — I actively seek feedback from my learners
+                to refine my own teaching methodologies, ensuring that I continuously grow
+                as a mentor, preceptor, and clinician.
+              </p>
+
+              {/* Paragraph 4 */}
+              <p
+                className="font-body text-text-secondary"
+                style={{ fontSize: "1rem", lineHeight: "1.85", marginBottom: "1.5rem" }}
+              >
+                In the teaching setting, I focus on asking mentally stimulating, open-ended
+                questions that push students to critically evaluate complex clinical scenarios
+                rather than arrive at surface-level answers. As a Lab Coordinator at Purdue
+                University, I put this into practice by facilitating simulated clinical
+                interviews for first-year pharmacy students, serving as their primary evaluator
+                and providing real-time constructive feedback on patient rapport, active
+                listening, and clinical accuracy. The goal was never perfection in the
+                simulation — it was to make every session a genuine learning event.
+              </p>
+
+              {/* Khalil Gibran blockquote */}
               <blockquote
                 style={{
                   background: "var(--color-accent-light)",
@@ -162,9 +216,8 @@ export default function TeachingContent() {
                     lineHeight: "1.6",
                   }}
                 >
-                  &ldquo;Good teaching cannot be reduced to technique; good
-                  teaching comes from the identity and integrity of the
-                  teacher.&rdquo;
+                  &ldquo;The teacher who is indeed wise does not bid you to enter the house of
+                  his wisdom but rather leads you to the threshold of your mind.&rdquo;
                 </p>
                 <cite
                   className="font-mono"
@@ -178,7 +231,7 @@ export default function TeachingContent() {
                     fontStyle: "normal",
                   }}
                 >
-                  — Parker J. Palmer
+                  — Khalil Gibran
                 </cite>
               </blockquote>
             </motion.div>
@@ -310,6 +363,46 @@ export default function TeachingContent() {
                   </div>
                 </div>
               </SidebarCard>
+
+              {/* Card 4 — IPTeC Teaching Portfolio */}
+              <div
+                className="rounded-[1.25rem] border border-border bg-surface"
+                style={{ padding: "1.75rem" }}
+              >
+                <p
+                  className="font-mono uppercase text-accent"
+                  style={{
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.12em",
+                    marginBottom: "1.25rem",
+                    paddingBottom: "0.75rem",
+                    borderBottom: "1px solid var(--color-border)",
+                  }}
+                >
+                  IPTeC Teaching Portfolio
+                </p>
+                <p
+                  className="font-body text-text-muted"
+                  style={{ fontSize: "0.8rem", lineHeight: "1.65", marginBottom: "1.25rem" }}
+                >
+                  A complete record of teaching activities, reflections, philosophy,
+                  and precepting experiences submitted as part of the IPTeC certification
+                  program through Butler University College of Pharmacy.
+                </p>
+                <a
+                  href="/iptec-portfolio.pdf"
+                  download
+                  className="flex w-full items-center justify-center gap-1.5 rounded-lg font-body font-medium text-white transition-colors duration-200 hover:opacity-90"
+                  style={{
+                    backgroundColor: "var(--color-accent)",
+                    fontSize: "0.8rem",
+                    padding: "0.65rem 1rem",
+                  }}
+                >
+                  <span>↓</span>
+                  IPTeC Teaching Portfolio
+                </a>
+              </div>
             </motion.aside>
 
           </div>

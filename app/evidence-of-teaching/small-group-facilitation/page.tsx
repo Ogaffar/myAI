@@ -83,7 +83,7 @@ export default function SmallGroupFacilitationPage() {
                 className="font-display font-medium text-text-primary"
                 style={{ fontSize: "1.5rem", lineHeight: "1.2" }}
               >
-                Oncology Solid Tumors — T4 Therapeutic Case Conference Facilitation
+                RX 517: Advanced Pharmacotherapeutics — Small Group Case Facilitation
               </h2>
               <span
                 className="font-mono uppercase whitespace-nowrap flex-shrink-0"
@@ -111,7 +111,7 @@ export default function SmallGroupFacilitationPage() {
                 marginBottom: "1.5rem",
               }}
             >
-              Teaching Assistant&nbsp;·&nbsp;T4 (P4) Pharmacy Students&nbsp;·&nbsp;Butler University College of Pharmacy
+              Advanced Clinical Case Facilitator&nbsp;·&nbsp;P3 (Third-Year) Pharmacy Students&nbsp;·&nbsp;Butler University College of Pharmacy
             </p>
 
             <EntryLabel>About the Presentation</EntryLabel>
@@ -119,15 +119,15 @@ export default function SmallGroupFacilitationPage() {
               className="font-body text-text-secondary"
               style={{ fontSize: "0.925rem", lineHeight: "1.8", marginBottom: "1.25rem" }}
             >
-              In this role, I served as a Teaching Assistant for Butler University&apos;s
-              longitudinal T4 Therapeutic Case Conference course, facilitating weekly small
-              group case study discussions on oncology solid tumor topics. Rather than
-              presenting content, my role was to guide student reasoning — posing clinically
-              grounded, open-ended questions that pushed students to evaluate complex
-              therapeutic scenarios and arrive at evidence-based recommendations
-              independently. The goal was to challenge surface-level pattern matching and
-              encourage the kind of integrative clinical thinking that distinguishes a good
-              pharmacist.
+              In this role, I served as an Advanced Clinical Case Facilitator for Butler
+              University&apos;s RX 517 Advanced Pharmacotherapeutics course, leading small groups
+              of third-year pharmacy students through complex, multi-disease-state patient
+              cases requiring them to balance guideline recommendations with patient-specific
+              nuances — renal impairment, comorbidities, and drug-drug interactions. I
+              challenged students to defend their therapeutic recommendations using clinical
+              guidelines and drug references, and utilized open-ended questions to push
+              them to evaluate why a specific drug or dose was selected, driving them to
+              think like clinical pharmacists.
             </p>
 
             <EntryLabel>Reflection</EntryLabel>
@@ -140,14 +140,15 @@ export default function SmallGroupFacilitationPage() {
                 marginBottom: "1.25rem",
               }}
             >
-              Facilitation is harder than lecturing, and more rewarding. You cannot rely on
-              having the right answer ready — you have to be responsive to where the students
-              are and what they&apos;re wrestling with in real time. The oncology content added
-              another layer because many students found the complexity of solid tumor
-              management daunting. I found that the most productive moments came when I
-              resisted the urge to fill silence too quickly and let students sit with the
-              discomfort of not immediately knowing the answer. That is where the real
-              thinking happened.
+              Facilitating across two completely different learner levels has expanded my
+              versatility as an educator. With the first-year students at Purdue, I learned
+              the importance of patience and building confidence, focusing heavily on
+              foundational communication and the basics of patient care. With the advanced
+              RX 517 students at Butler, my role shifted to facilitator — where the key to
+              success was stepping back and allowing students to clinically reason and
+              collaborate with their peers. Navigating both environments has prepared me to
+              effectively precept and mentor any level of learner I encounter in my future
+              clinical practice.
             </p>
 
             <EntryLabel>Supporting Materials</EntryLabel>
@@ -242,15 +243,14 @@ export default function SmallGroupFacilitationPage() {
                 marginBottom: "1.25rem",
               }}
             >
-              Working with first-year students brought me back to the foundational skills
-              that experienced pharmacists execute automatically — and reminded me how much
-              intention those skills actually require. The most common areas for growth were
-              not clinical knowledge but communication: pacing the interview, maintaining eye
-              contact, and resisting the urge to bounce between topics before completing each
-              one. I found that the most effective feedback was specific and immediate —
-              citing the exact moment in the interview where something worked or could be
-              stronger, rather than speaking in generalities. Real-time feedback is a skill
-              I am continuing to develop.
+              With the first-year students at Purdue, I learned the importance of patience
+              and building confidence, focusing heavily on foundational communication and the
+              basics of patient care. The most common areas for growth were not clinical
+              knowledge but communication — pacing the interview, maintaining eye contact,
+              and resisting the urge to move between topics before completing each one.
+              I found that specific, immediate feedback citing the exact moment in the
+              interview where something worked or could be stronger was far more effective
+              than general commentary.
             </p>
 
             <EntryLabel>Supporting Materials</EntryLabel>

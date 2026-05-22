@@ -1,8 +1,3 @@
-// NOTE FOR ZAINAB: Three co-precepting entries have placeholder dates and reflections.
-// Please provide: (1) the date/month for each co-precepting session,
-// (2) your personal reflection for each session (2-4 sentences, first person).
-// Update these directly in this file under the CO_PRECEPTING_ENTRIES array.
-
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
@@ -14,34 +9,6 @@ export const metadata: Metadata = {
   description:
     "Experiential precepting and topic facilitation experiences by Zainab Olayiwola with APPE and IPPE pharmacy students at Ascension St. Vincent Evansville.",
 };
-
-const CO_PRECEPTING_ENTRIES = [
-  {
-    title: "Supportive Care in the ICU",
-    date: "[DATE — TO BE CONFIRMED BY ZAINAB]",
-    meta: "Co-Preceptor · Other Healthcare Professional Students · Ascension St. Vincent Evansville",
-    about:
-      "In this co-precepting experience, I contributed to the design and delivery of a rotation focused on supportive care in the intensive care unit setting. My role involved participating in patient care discussions, guiding learners through clinical decision-making for complex ICU patients, and contributing to the assessment of learner performance and professional development.",
-    reflection:
-      "[ZAINAB TO COMPLETE — What did you find most valuable about this experience? What did the students struggle with most? How did you approach giving feedback in a high-stakes clinical environment?]",
-  },
-  {
-    title: "Acid Base Disorders and Parenteral Nutrition",
-    date: "[DATE — TO BE CONFIRMED BY ZAINAB]",
-    meta: "Co-Preceptor · Other Healthcare Professional Students · Ascension St. Vincent Evansville",
-    about:
-      "This co-precepting experience focused on two foundational areas of clinical pharmacy: acid-base disorder interpretation and parenteral nutrition management. I contributed to patient care discussions and the assessment of learner reasoning in these domains, which require the ability to integrate laboratory data, clinical context, and pharmacokinetic principles simultaneously.",
-    reflection: "[ZAINAB TO COMPLETE]",
-  },
-  {
-    title: "Oncology: Principles and Supportive Care",
-    date: "[DATE — TO BE CONFIRMED BY ZAINAB]",
-    meta: "Co-Preceptor · Other Healthcare Professional Students · Ascension St. Vincent Evansville",
-    about:
-      "This co-precepting experience covered foundational oncology pharmacy principles and supportive care management, including areas such as chemotherapy toxicity, antiemesis, pain management, and infection prophylaxis in immunocompromised patients. I supported learners in applying these principles to the care of oncology patients during their rotation.",
-    reflection: "[ZAINAB TO COMPLETE]",
-  },
-] as const;
 
 const CONDENSED_ENTRIES = [
   {
@@ -110,6 +77,16 @@ function GroupHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
+const DATE_PILL_STYLE: React.CSSProperties = {
+  fontSize: "0.65rem",
+  letterSpacing: "0.1em",
+  backgroundColor: "var(--color-accent-light)",
+  color: "var(--color-accent)",
+  border: "1px solid rgba(15,76,58,0.15)",
+  borderRadius: "999px",
+  padding: "0.25rem 0.8rem",
+};
+
 export default function ExperientialPreceptingPage() {
   return (
     <>
@@ -158,96 +135,202 @@ export default function ExperientialPreceptingPage() {
             </p>
           </AnimatedSection>
 
-          {CO_PRECEPTING_ENTRIES.map((entry, i) => (
-            <AnimatedSection key={entry.title} delay={0.1 + i * 0.08}>
-              {i > 0 && (
-                <hr
-                  style={{
-                    margin: "2.5rem 0",
-                    border: "none",
-                    borderTop: "1px solid var(--color-border)",
-                  }}
-                />
-              )}
-
-              {/* Header row */}
-              <div
-                className="flex items-start justify-between gap-6"
-                style={{ marginBottom: "0.875rem" }}
+          {/* Entry 1 — Oncology CINV */}
+          <AnimatedSection delay={0.1}>
+            <div
+              className="flex items-start justify-between gap-6"
+              style={{ marginBottom: "0.875rem" }}
+            >
+              <h2
+                className="font-display font-medium text-text-primary"
+                style={{ fontSize: "1.5rem", lineHeight: "1.2" }}
               >
-                <h2
-                  className="font-display font-medium text-text-primary"
-                  style={{ fontSize: "1.5rem", lineHeight: "1.2" }}
-                >
-                  {entry.title}
-                </h2>
-                <span
-                  className="font-mono uppercase whitespace-nowrap flex-shrink-0"
-                  style={{
-                    fontSize: "0.65rem",
-                    letterSpacing: "0.1em",
-                    backgroundColor: "var(--color-accent-light)",
-                    color: "var(--color-accent)",
-                    border: "1px solid rgba(15,76,58,0.15)",
-                    borderRadius: "999px",
-                    padding: "0.25rem 0.8rem",
-                  }}
-                >
-                  {entry.date}
-                </span>
-              </div>
-
-              {/* Meta row */}
-              <p
-                className="font-mono uppercase"
-                style={{
-                  fontSize: "0.7rem",
-                  letterSpacing: "0.08em",
-                  color: "var(--color-text-muted)",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                {entry.meta}
-              </p>
-
-              <EntryLabel>About the Experience</EntryLabel>
-              <p
-                className="font-body text-text-secondary"
-                style={{
-                  fontSize: "0.925rem",
-                  lineHeight: "1.8",
-                  marginBottom: "1.25rem",
-                }}
-              >
-                {entry.about}
-              </p>
-
-              <EntryLabel>Reflection</EntryLabel>
-              <p
-                className="font-body text-text-secondary"
-                style={{
-                  fontSize: "0.925rem",
-                  lineHeight: "1.8",
-                  fontStyle: "italic",
-                  marginBottom: "1rem",
-                }}
-              >
-                {entry.reflection}
-              </p>
-
-              {/* Setting tag instead of download link */}
-              <span
-                className="font-mono uppercase"
-                style={{
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.08em",
-                  color: "var(--color-text-muted)",
-                }}
-              >
-                Institutional Setting
+                Oncology Service — CINV Management Co-Precepting
+              </h2>
+              <span className="font-mono uppercase whitespace-nowrap flex-shrink-0" style={DATE_PILL_STYLE}>
+                2025–2026
               </span>
-            </AnimatedSection>
-          ))}
+            </div>
+            <p
+              className="font-mono uppercase"
+              style={{
+                fontSize: "0.7rem",
+                letterSpacing: "0.08em",
+                color: "var(--color-text-muted)",
+                marginBottom: "1.5rem",
+              }}
+            >
+              Co-Preceptor&nbsp;·&nbsp;APPE (P4) Student&nbsp;·&nbsp;Oncology Service, Ascension St. Vincent
+            </p>
+
+            <EntryLabel>About the Experience</EntryLabel>
+            <p
+              className="font-body text-text-secondary"
+              style={{ fontSize: "0.925rem", lineHeight: "1.8", marginBottom: "1.25rem" }}
+            >
+              In this co-precepting experience, I worked with a fourth-year APPE pharmacy
+              student on the oncology service, focusing on chemotherapy-induced nausea and
+              vomiting management. My approach combined active shadowing and modeling —
+              the student observed how pharmacists evaluate patient regimens and interact
+              with the oncology team — with a structured topic discussion where the student
+              presented core clinical concepts from their personalized notes. To elevate
+              their understanding, I integrated the slide deck from my formal CINV
+              presentation, walking them step by step through treatment algorithms, dosing
+              nuances, and neuroreceptor targets. I provided immediate real-time verbal
+              feedback following the discussion, highlighting the student&apos;s strong grasp
+              of foundational drug mechanisms while guiding them on tailoring antiemetic
+              regimens to specific patient risk profiles.
+            </p>
+
+            <EntryLabel>Reflection</EntryLabel>
+            <p
+              className="font-body text-text-secondary"
+              style={{ fontSize: "0.925rem", lineHeight: "1.8", fontStyle: "italic" }}
+            >
+              Working with the advanced P4 student on the oncology rotation allowed me
+              to step into a true coaching role — utilizing my own clinical knowledge to
+              challenge their reasoning and providing immediate, actionable verbal feedback
+              to refine their clinical autonomy. This experience reinforced my belief that
+              the most effective precepting is not passive observation but active engagement,
+              where I am simultaneously modeling, questioning, and creating space for the
+              learner to develop their own clinical voice.
+            </p>
+          </AnimatedSection>
+
+          <hr
+            style={{
+              margin: "2.5rem 0",
+              border: "none",
+              borderTop: "1px solid var(--color-border)",
+            }}
+          />
+
+          {/* Entry 2 — ICU IPPE */}
+          <AnimatedSection delay={0.18}>
+            <div
+              className="flex items-start justify-between gap-6"
+              style={{ marginBottom: "0.875rem" }}
+            >
+              <h2
+                className="font-display font-medium text-text-primary"
+                style={{ fontSize: "1.5rem", lineHeight: "1.2" }}
+              >
+                Intensive Care Unit Service — Foundational Hospital Pharmacy Precepting
+              </h2>
+              <span className="font-mono uppercase whitespace-nowrap flex-shrink-0" style={DATE_PILL_STYLE}>
+                2025–2026
+              </span>
+            </div>
+            <p
+              className="font-mono uppercase"
+              style={{
+                fontSize: "0.7rem",
+                letterSpacing: "0.08em",
+                color: "var(--color-text-muted)",
+                marginBottom: "1.5rem",
+              }}
+            >
+              Co-Preceptor&nbsp;·&nbsp;IPPE (P1) Student&nbsp;·&nbsp;ICU Service, Ascension St. Vincent
+            </p>
+
+            <EntryLabel>About the Experience</EntryLabel>
+            <p
+              className="font-body text-text-secondary"
+              style={{ fontSize: "0.925rem", lineHeight: "1.8", marginBottom: "1.25rem" }}
+            >
+              In this co-precepting experience, I introduced a first-year IPPE pharmacy
+              student to the foundations of hospital pharmacy in the intensive care unit.
+              I demonstrated how to safely and effectively review and verify clinical orders
+              within the electronic medical record for critically ill patients. The student
+              accompanied me during multidisciplinary ICU rounds, where I served as an active
+              facilitator — answering their real-time questions about ICU supportive care
+              bundles and explaining the clinical rationale behind provider bedside
+              recommendations. We actively reviewed clinical consults together, with me
+              walking the student through the patient profile, demonstrating how to gather
+              data, evaluate organ function, and formulate initial recommendations — giving
+              them hands-on exposure to real-world clinical practice.
+            </p>
+
+            <EntryLabel>Reflection</EntryLabel>
+            <p
+              className="font-body text-text-secondary"
+              style={{ fontSize: "0.925rem", lineHeight: "1.8", fontStyle: "italic", marginBottom: "1.5rem" }}
+            >
+              Presenting the introductory P1 student with the ICU environment taught me
+              the importance of breaking down complex, fast-paced workflows into foundational
+              knowledge that is easy to understand. The ICU can be an overwhelming environment
+              for any learner — pacing the experience and creating deliberate moments of
+              explanation rather than letting the rotation blur past them was essential.
+              This experience has fully prepared me to independently precept with confidence
+              and elevate any level of pharmacy learner in my future clinical practice.
+            </p>
+
+            {/* Formal Evaluation */}
+            <EntryLabel>Formal Evaluation</EntryLabel>
+            <div style={{ marginBottom: "1rem" }}>
+              <span
+                className="font-display"
+                style={{ fontSize: "2rem", color: "var(--color-accent)", lineHeight: "1" }}
+              >
+                35 / 35
+              </span>
+              <p
+                className="font-body"
+                style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", marginTop: "0.25rem" }}
+              >
+                Accomplished across all 7 evaluation categories
+              </p>
+            </div>
+
+            <blockquote
+              style={{
+                background: "var(--color-accent-light)",
+                borderLeft: "4px solid var(--color-accent)",
+                borderRadius: "0 0.75rem 0.75rem 0",
+                padding: "1.5rem 1.75rem 1.5rem 2rem",
+                margin: "0 0 1rem",
+              }}
+            >
+              <p
+                className="font-display"
+                style={{
+                  fontSize: "1.1rem",
+                  fontStyle: "italic",
+                  color: "var(--color-text-primary)",
+                  lineHeight: "1.65",
+                }}
+              >
+                &ldquo;Very interesting critique. Addressed all sections very comprehensively and
+                with confidence. Detailed background orients audience well to the topic.
+                Very easy to follow along with the presentation — well organized.&rdquo;
+              </p>
+              <cite
+                className="font-mono"
+                style={{
+                  display: "block",
+                  fontSize: "0.65rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  color: "var(--color-accent)",
+                  marginTop: "0.75rem",
+                  fontStyle: "normal",
+                }}
+              >
+                — Student Reviewer, May 2026
+              </cite>
+            </blockquote>
+
+            <a
+              href="/presentation-evaluation.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center font-body transition-all duration-150 hover:underline"
+              style={{ fontSize: "0.825rem", color: "var(--color-accent)", gap: "0.35rem" }}
+            >
+              <span>↗</span>
+              View Full Evaluation Form (PDF)
+            </a>
+          </AnimatedSection>
 
           {/* ── Experiential Didactics ─────────────────────────────────────── */}
           <AnimatedSection delay={0.1}>
@@ -312,6 +395,99 @@ export default function ExperientialPreceptingPage() {
                   </p>
                 </div>
               ))}
+            </div>
+          </AnimatedSection>
+
+          {/* ── Preceptor Feedback & Professional Growth ───────────────────── */}
+          <AnimatedSection delay={0.1}>
+            <hr
+              style={{
+                margin: "3rem 0 2.5rem 0",
+                border: "none",
+                borderTop: "1px solid var(--color-border)",
+              }}
+            />
+            <GroupHeading>Preceptor Feedback &amp; Professional Growth</GroupHeading>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.12}>
+            <div
+              style={{
+                background: "var(--color-surface)",
+                border: "1px solid var(--color-border)",
+                borderRadius: "1.25rem",
+                padding: "2.5rem",
+              }}
+            >
+              <h3
+                className="font-display font-medium text-text-primary"
+                style={{ fontSize: "1.35rem", marginBottom: "1.25rem" }}
+              >
+                Reflection on Preceptor Feedback
+              </h3>
+              <p
+                className="font-body text-text-secondary"
+                style={{ fontSize: "0.925rem", lineHeight: "1.85", marginBottom: "1.5rem" }}
+              >
+                Experiencing growth as a clinical educator requires a willingness to invite,
+                accept, and actively implement constructive feedback. Throughout my residency
+                training, initial evaluations from my preceptors noted that while my clinical
+                knowledge and core content delivery were strong, I occasionally struggled with
+                presentation mechanics — specifically, moving through presentations too quickly
+                and exhibiting natural shyness when commanding a room. Early on, navigating
+                complex clinical rotations alongside teaching requirements meant that balancing
+                preparation time was a significant learning curve.
+              </p>
+              <p
+                className="font-body text-text-secondary"
+                style={{ fontSize: "0.925rem", lineHeight: "1.85", marginBottom: "1.5rem" }}
+              >
+                Rather than viewing these critiques as barriers, I utilized them as a
+                blueprint for deliberate personal and professional development. I established
+                a consistent feedback loop with my Residency Program Director, seeking regular
+                feedback and mentorship on my communication style, pacing, and preparation
+                strategies. Through this continuous guidance and intentional practice, I learned
+                to slow down my delivery, project confidence, and structure my presentations
+                efficiently.
+              </p>
+              <blockquote
+                style={{
+                  background: "var(--color-accent-light)",
+                  borderLeft: "4px solid var(--color-accent)",
+                  borderRadius: "0 0.75rem 0.75rem 0",
+                  padding: "1.5rem 1.75rem 1.5rem 2rem",
+                  margin: "0",
+                }}
+              >
+                <p
+                  className="font-display"
+                  style={{
+                    fontSize: "1.2rem",
+                    fontStyle: "italic",
+                    color: "var(--color-text-primary)",
+                    lineHeight: "1.6",
+                  }}
+                >
+                  &ldquo;Because I know firsthand what it feels like to struggle with confidence,
+                  I am better equipped to recognize these traits in my own students — allowing
+                  me to provide the same supportive, transformative mentorship that was extended
+                  to me.&rdquo;
+                </p>
+                <cite
+                  className="font-mono"
+                  style={{
+                    display: "block",
+                    fontSize: "0.65rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    color: "var(--color-accent)",
+                    marginTop: "0.75rem",
+                    fontStyle: "normal",
+                  }}
+                >
+                  — Zainab Olayiwola, PharmD
+                </cite>
+              </blockquote>
             </div>
           </AnimatedSection>
 

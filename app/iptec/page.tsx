@@ -136,7 +136,7 @@ export default function IptecIndexPage() {
         style={{ padding: "2rem 0 5rem 0" }}
       >
         <div className="mx-auto max-w-[1200px] px-6">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {CARDS.map((card, i) => (
               <AnimatedSection key={card.id} delay={i * 0.08}>
                 <div
@@ -199,6 +199,58 @@ export default function IptecIndexPage() {
                 </div>
               </AnimatedSection>
             ))}
+
+            {/* Card 4 — IPTeC Teaching Portfolio PDF */}
+            <AnimatedSection delay={CARDS.length * 0.08}>
+              <div
+                className="flex h-full flex-col rounded-[1.25rem] border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                style={{
+                  borderColor: "var(--color-border)",
+                  padding: "2rem",
+                }}
+              >
+                <div style={{ marginBottom: "1.25rem" }}>
+                  <DocumentIcon />
+                </div>
+
+                <h3
+                  className="font-display font-medium text-text-primary"
+                  style={{ fontSize: "1.25rem", marginBottom: "0.75rem" }}
+                >
+                  IPTeC Teaching Portfolio
+                </h3>
+
+                <p
+                  className="font-body text-text-secondary"
+                  style={{
+                    fontSize: "0.875rem",
+                    lineHeight: "1.7",
+                    flexGrow: 1,
+                    marginBottom: "1.5rem",
+                  }}
+                >
+                  The complete IPTeC Teaching Portfolio document including teaching philosophy,
+                  reflections on each teaching experience, precepting narratives, and supporting
+                  artifacts — submitted as part of the IPTeC certification program.
+                </p>
+
+                <div>
+                  <a
+                    href="/iptec-portfolio.pdf"
+                    download
+                    className="inline-flex items-center gap-1.5 rounded-full font-body font-medium text-white transition-all duration-250 hover:opacity-90"
+                    style={{
+                      backgroundColor: "var(--color-accent)",
+                      fontSize: "0.825rem",
+                      padding: "0.45rem 1.1rem",
+                    }}
+                  >
+                    <span style={{ fontSize: "0.85rem" }}>↓</span>
+                    Download IPTeC Teaching Portfolio (PDF)
+                  </a>
+                </div>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>

@@ -45,7 +45,7 @@ const ENTRIES = [
     about:
       "This Grand Rounds presentation was developed in direct connection with my ongoing research project on VTE prophylaxis patterns in high-risk cancer patients at Ascension St. Vincent. It guided attendees through the full clinical spectrum of cancer-associated thrombosis — from risk stratification using the Khorana Score through the critical appraisal of four landmark trials (Hokusai VTE Cancer, SELECT-D, CARAVAGGIO, and CANVAS) and the synthesis of current ASCO, ITAC, and NCCN guideline recommendations into a patient-centered decision framework. Three complex patient cases were used to apply the evidence in practice.",
     reflection:
-      "Grand Rounds was the presentation I felt most pressure to get right. The audience of pharmacists and residents was clinically sharp, and I knew the content would be scrutinized. The preparation process itself was one of the most valuable parts — working through the critical appraisal of four trials simultaneously forced me to understand not just what each trial found, but why the field evolved the way it did from LMWH to DOACs. The connection to my research project made this feel especially meaningful, and I hope that came through in the session.",
+      "Presenting on oncology-associated VTE allowed me to practice translating complex and sometimes conflicting guideline information into clear, concise, and easy-to-digest clinical content to guide actionable decisions. I utilized patient cases to highlight the nuances of bleeding risk, which kept the audience highly engaged. In the future, I want to incorporate a visual decision tree handout to help learners navigate the choice of anticoagulant more efficiently.",
     downloadHref: "/vte-oncology.pdf",
   },
   {
@@ -70,7 +70,7 @@ const ENTRIES = [
     about:
       "This patient case presentation used a real clinical scenario — a 46-year-old woman with end-stage renal disease on peritoneal dialysis presenting to the ED with septic shock — to ground the pharmacokinetic principles of vancomycin dosing in PD in clinical reality. The session covered sepsis diagnostic criteria and scoring tools (SIRS, qSOFA, NEWS), the pathophysiology and classification of shock, the unique pharmacokinetics of vancomycin in peritoneal dialysis patients (half-life up to 7.5 days, only 28% removal by PD), and the appropriate application of AUC-guided dosing in this population.",
     reflection:
-      "Patient case presentations require a different kind of preparation than topic-based lectures — the narrative has to hold together clinically and pedagogically at the same time. I found that anchoring the pharmacokinetic content in a real patient scenario made the material more accessible and more memorable for the audience. A common misconception I addressed — that intraperitoneal vancomycin is appropriate for systemic infections in PD patients — generated productive discussion that I think will stick with attendees in a way that a slide alone would not.",
+      "Renal dosing in peritoneal dialysis and sepsis is a complex topic for learners. By breaking the presentation down step by step into digestible concepts — providing foundational background before diving into drug dosing — I was able to make it easy to follow. The interactiveness of the patient case made it easy to apply these dosing strategies directly to an ICU patient workup and generated strong engagement from the audience.",
     downloadHref: "/vancomycin-pd.pdf",
   },
 ] as const;
