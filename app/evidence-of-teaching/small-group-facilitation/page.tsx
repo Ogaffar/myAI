@@ -266,6 +266,80 @@ export default function SmallGroupFacilitationPage() {
             </a>
           </AnimatedSection>
 
+          {/* ── Formal Evaluation ──────────────────────────────────────────── */}
+          <AnimatedSection delay={0.1}>
+            <hr
+              style={{
+                margin: "3rem 0 2.5rem 0",
+                border: "none",
+                borderTop: "1px solid var(--color-border)",
+              }}
+            />
+            <EntryLabel>Formal Evaluation</EntryLabel>
+            <div style={{ marginBottom: "1rem" }}>
+              <span
+                className="font-display"
+                style={{ fontSize: "2rem", color: "var(--color-accent)", lineHeight: "1" }}
+              >
+                Outstanding
+              </span>
+              <p
+                className="font-body"
+                style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", marginTop: "0.25rem" }}
+              >
+                Rated across objectives, content, organization, delivery, and professionalism
+              </p>
+            </div>
+
+            <blockquote
+              style={{
+                background: "var(--color-accent-light)",
+                borderLeft: "4px solid var(--color-accent)",
+                borderRadius: "0 0.75rem 0.75rem 0",
+                padding: "1.5rem 1.75rem 1.5rem 2rem",
+                margin: "0 0 1rem",
+              }}
+            >
+              <p
+                className="font-display"
+                style={{
+                  fontSize: "1.1rem",
+                  fontStyle: "italic",
+                  color: "var(--color-text-primary)",
+                  lineHeight: "1.65",
+                }}
+              >
+                &ldquo;Great job! Great use of open-ended questions and well rehearsed.
+                Summary was very helpful when conflicting parts arose.&rdquo;
+              </p>
+              <cite
+                className="font-mono"
+                style={{
+                  display: "block",
+                  fontSize: "0.65rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  color: "var(--color-accent)",
+                  marginTop: "0.75rem",
+                  fontStyle: "normal",
+                }}
+              >
+                — A. Hardesty, Evaluator, April 2026
+              </cite>
+            </blockquote>
+
+            <a
+              href="/teaching-evaluations.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center font-body transition-all duration-150 hover:underline"
+              style={{ fontSize: "0.825rem", color: "var(--color-accent)", gap: "0.35rem" }}
+            >
+              <span>↗</span>
+              View Full Evaluation Forms (PDF)
+            </a>
+          </AnimatedSection>
+
           {/* Bottom navigation */}
           <AnimatedSection delay={0.1}>
             <div
